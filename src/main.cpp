@@ -1,66 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#include "utils.h"
+#include "workingtable.h"
+#include "robotbrain.h"
+
 vector<string> maps;
 
-struct Pos
-{
-    float x, y;
-
-    Pos operator+(const Pos &pos)
-    {
-        return {x + pos.x, y + pos.y};
-    }
-
-    Pos operator-(const Pos &pos)
-    {
-        return {x - pos.x, y - pos.y};
-    }
-
-    float euclidDistance(const Pos &pos)
-    {
-        return sqrtf(powf(x - pos.x, 2) + powf(y - pos.y, 2));
-    }
-
-    float manhattanDistance(const Pos &pos)
-    {
-        return abs(x - pos.x) + abs(y - pos.y);
-    }
-};
-
-struct WorkingTable
-{
-    int type;
-    Pos position;
-    int remainTime;
-    int resourceState;
-    bool productState;
-} table[51];
-
-class RobotBrain
-{
-private:
-    Pos destination;
-
-public:
-    int workingTableID;
-    int carriedItemType;
-    float timeValMultiplier;
-    float collisionValMultiplier;
-    float angluarVelocity;
-    Pos velocity;
-    float direction;
-    Pos position;
-
-    pair<int, double> travel()
-    {
-        Pos diff = destination - position;
-
-        return make_pair(3, 1.5);
-    }
-};
+WorkingTable table[51];
 
 RobotBrain robot[4];
+
 
 bool initMap()
 {
@@ -76,6 +26,7 @@ bool initMap()
     return false;
 }
 
+
 bool readUntilOK()
 {
     char line[1024];
@@ -88,6 +39,7 @@ bool readUntilOK()
     }
     return false;
 }
+
 
 void readFrame()
 {
@@ -105,6 +57,7 @@ void readFrame()
     }
     readUntilOK();
 }
+
 
 int main()
 {
