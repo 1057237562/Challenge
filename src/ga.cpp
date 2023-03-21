@@ -212,7 +212,7 @@ int main(void)
                 mutators[i].mutate();
             }
         }
-        fclose(stdin)
+        fclose(stdin);
     }
     else
     {
