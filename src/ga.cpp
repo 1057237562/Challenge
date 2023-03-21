@@ -69,7 +69,7 @@ struct Mutator
 
     void mutate()
     {
-        int sbit = pick(gen);
+        int sbit = rand() % 10;
         data[sbit] += mut(gen);
     }
 
@@ -77,7 +77,7 @@ struct Mutator
     {
         for (int i = 0; i < 10; i++)
         {
-            if (binary_pick(gen))
+            if (rand() % 2)
             {
                 data[i] = fa.data[i];
             }
@@ -145,11 +145,11 @@ void SA()
     sort(mutators, mutators + N, cmpCost);
     for (int i = S; i < N; i++)
     {
-        int mother = pick(gen);
+        int mother = rand() % S;
         mutators[i] = mutators[mother];
         if (possibility(gen) > crossRate)
         {
-            int father = pick(gen);
+            int father = rand() % S;
             mutators[i].cross(mutators[father]);
         }
         if (possibility(gen) > mutateRate)
