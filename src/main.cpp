@@ -39,9 +39,6 @@ struct WorkingTable
 
 class RobotBrain
 {
-private:
-    Pos destination;
-
 public:
     int workingTableID;
     int carriedItemType;
@@ -52,11 +49,16 @@ public:
     float direction;
     Pos position;
 
+    Pos destination;
+
+    double data[10];
+
     pair<int, double> travel()
     {
         Pos diff = destination - position;
-
-        return make_pair(3, 1.5);
+        int f = max(6, min(-2, (int)(data[0] * diff.x + data[1] * diff.y + data[2] * velocity.x + data[3] * velocity.y + data[4] * direction)));
+        double r = max(M_PI, min(-M_PI, data[5] * diff.x + data[6] * diff.y + data[7] * velocity.x + data[8] * velocity.y + data[9] * direction));
+        return make_pair(f, r);
     }
 };
 
