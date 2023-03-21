@@ -10,7 +10,7 @@ uniform_real_distribution<float> desti(0.0, 100.0);
 
 uniform_real_distribution<float> dis(-2.0, 6.0);
 
-uniform_real_distribution<float> mut(-1.0, 1.0);
+uniform_real_distribution<float> mut(-0.1, 0.1);
 
 uniform_real_distribution<float> possibility(0.0, 1.0);
 
@@ -55,9 +55,10 @@ struct Mutator
     Pos pos;
     Pos velocity;
     float direction = 0.0;
-    int cost = 0;
+    int timer = 0;
 
-    double data[10];
+    vector<double> data;
+    float startDistance;
 
     pair<int, double> travel()
     {
@@ -83,20 +84,23 @@ struct Mutator
             }
         }
     }
+
+    float distance() const
+    {
+        return dest.euclidDistance(pos);
+    }
+
+    bool operator<(const Mutator &b)
+    {
+        if (timer == b.timer)
+            return distance() / startDistance < b.distance() / b.startDistance;
+        else
+            return timer < b.timer;
+    }
 };
 
-bool cmpDis(const Mutator &a, const Mutator &b)
-{
-    return a.dest.euclidDistance(a.pos) < b.dest.euclidDistance(b.pos);
-}
-
-bool cmpCost(const Mutator &a, const Mutator &b)
-{
-    return a.cost < b.cost;
-}
-
-const int N = 100;
-const int S = 10;
+const int N = 1000;
+const int S = 100;
 
 const double crossRate = 0.67;
 const double mutateRate = 0.1;
@@ -110,7 +114,7 @@ void init()
     {
         for (int j = 0; j < 10; j++)
         {
-            mutators[i].data[j] = dis(gen);
+            mutators[i].data.push_back(dis(gen));
         }
     }
 }
@@ -122,27 +126,33 @@ void process()
     for (int i = 0; i < N; i++)
     {
         mutators[i].dest = destination;
+        mutators[i].startDistance = mutators[i].distance();
     }
-    for (int i = 0; i < 50; i++)
+    for (int t = 0; t < 10; t++)
     {
         for (int i = 0; i < N; i++)
         {
-            pair<int, double> result = mutators[i].travel();
-            mutators[i].direction += result.second;
-            mutators[i].velocity = Pos::fromRadian(mutators[i].direction) * result.first;
-            mutators[i].pos = mutators[i].pos + mutators[i].velocity;
+            if (mutators[i].distance() > 0.1)
+            {
+                pair<int, double> result = mutators[i].travel();
+                mutators[i].direction += result.second;
+                mutators[i].velocity = Pos::fromRadian(mutators[i].direction) * result.first;
+                mutators[i].pos = mutators[i].pos + mutators[i].velocity;
+                mutators[i].timer = t;
+            }
         }
-    }
-    sort(mutators, mutators + N, cmpDis);
-    for (int i = 0; i < N; i++)
-    {
-        mutators[i].cost += i;
     }
 }
 
 void SA()
 {
-    sort(mutators, mutators + N, cmpCost);
+    sort(mutators, mutators + N);
+    if (mutators[0].distance() > mutators[0].startDistance)
+    {
+        init();
+        return;
+    }
+
     for (int i = S; i < N; i++)
     {
         int mother = rand() % S;
@@ -156,22 +166,20 @@ void SA()
         {
             mutators[i].mutate();
         }
-        mutators[i].cost = 0;
     }
-    for (int i = 0; i < S; i++)
-        mutators[i].cost = 0;
 }
 
 int main(void)
 {
     srand(time(0));
+    init();
     int cnt = 0;
     while (++cnt)
     {
         cout << "Processing Batch : #" << cnt << endl;
         for (int i = 0; i < 10; i++)
         {
-            for (int j = 0; j < 10; j++)
+            for (int j = 0; j < 1000; j++)
             {
                 process();
                 SA();
@@ -179,6 +187,14 @@ int main(void)
             cout << "■";
         }
         cout << endl
-             << "Best Cost Value : " << mutators[0].cost << endl;
+             << "   Min Distance : " << mutators[0].distance() << "/" << mutators[0].startDistance << endl;
+        if (!(cnt % 10))
+        {
+            cout << "Best Model : " << endl;
+            for (int i = 0; i < 10; i++)
+                cout
+                    << mutators[0].data[i] << " ";
+            cout << endl;
+        }
     }
 }
