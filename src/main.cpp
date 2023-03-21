@@ -76,8 +76,23 @@ bool initMap()
     return false;
 }
 
+bool readUntilOK()
+{
+    char line[1024];
+    while (fgets(line, sizeof line, stdin))
+    {
+        if (line[0] == 'O' && line[1] == 'K')
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 void readFrame()
 {
+    int money;
+    cin >> money;
     int numOfWorkingTable;
     cin >> numOfWorkingTable;
     for (int i = 0; i < numOfWorkingTable; i++)
@@ -88,10 +103,7 @@ void readFrame()
     {
         cin >> robot[i].workingTableID >> robot[i].carriedItemType >> robot[i].timeValMultiplier >> robot[i].collisionValMultiplier >> robot[i].angluarVelocity >> robot[i].velocity.x >> robot[i].velocity.y >> robot[i].direction >> robot[i].position.x >> robot[i].position.y;
     }
-    string str;
-    getline(cin, str);
-    if (str[0] = 'O' && str[1] == 'K')
-        return;
+    readUntilOK();
 }
 
 int main()
@@ -102,8 +114,6 @@ int main()
     int frameID;
     while (scanf("%d", &frameID) != EOF)
     {
-        int money;
-        scanf("%d", &money);
         readFrame();
         printf("%d\n", frameID);
         for (int robotId = 0; robotId < 4; robotId++)
