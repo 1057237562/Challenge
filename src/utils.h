@@ -1,6 +1,10 @@
 /**
  * 一些基本的类型、函数
  */
+#ifndef _UTL_H_
+#define _UTL_H_
+
+
 #include <cstdio>
 #include <cmath>
 
@@ -96,3 +100,6 @@ inline void endFrame()
 {
     printf("OK\n");
 }
+
+
+#endif

@@ -1,5 +1,13 @@
+#ifndef _RB_H_
+#define _RB_H_
+
+
+#include "scheduler.h"
+
 class RobotBrain
 {
+    friend class Scheduler;
+
 private:
     Pos destination;
 
@@ -26,3 +34,6 @@ public:
         destination = pos;
     }
 };
+
+
+#endif
