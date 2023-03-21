@@ -190,7 +190,20 @@ void SA()
 int main(void)
 {
     srand(time(0));
-    init();
+    if (freopen("best.ckpt", "r", stdin))
+    {
+        cout << "Reading Checkpoint" << endl;
+        for (int i = 0; i < S; i++)
+        {
+            for (int j = 0; j < DS; j++)
+                cin >> mutators[i].data[j];
+        }
+        fclose(stdin)
+    }
+    else
+    {
+        init();
+    }
     int cnt = 0;
     while (++cnt)
     {
@@ -205,7 +218,7 @@ int main(void)
             cout << "■";
         }
         cout << endl
-             << "   Min Distance : " << mutators[0].distance() << "/" << mutators[0].startDistance << ":" << mutators[0].timer << endl;
+             << "   Min Distance : " << mutators[0].distance() << "/" << mutators[0].startDistance << " Time Consumption:" << mutators[0].timer << endl;
         if (!(cnt % 10))
         {
             cout << "Best Model : " << endl;
@@ -213,6 +226,16 @@ int main(void)
                 cout
                     << mutators[0].data[i] << " ";
             cout << endl;
+
+            cout << "Writing To files..." << endl;
+            freopen("best.ckpt", "w", stdout);
+            for (int i = 0; i < S; i++)
+            {
+                for (int j = 0; j < DS; j++)
+                    cout << mutators[i].data[j] << " ";
+                cout << endl;
+            }
+            fclose(stdout);
         }
     }
 }
