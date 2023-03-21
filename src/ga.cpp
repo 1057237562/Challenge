@@ -16,7 +16,7 @@ uniform_real_distribution<float> possibility(0.0, 1.0);
 
 const int N = 10000;
 const int S = 100;
-const int DS = 8;
+const int DS = 4;
 
 const double crossRate = 0.67;
 const double mutateRate = 0.1;
