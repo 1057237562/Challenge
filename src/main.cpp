@@ -1,11 +1,37 @@
 #include <iostream>
 using namespace std;
 
-string map[100];
+vector<string> map;
 
+struct Pos
+{
+    float x, y;
+};
 
+struct WorkingTable
+{
+    int type;
+    Pos position;
+    int remainTime;
+    int resourceState;
+    bool productState;
+} table[51];
 
-bool readUntilOK()
+class RobotBrain
+{
+public:
+    int workingTableID;
+    Pos destination;
+    Pos currentPosition;
+    double angle = 0.0;
+
+    pair<int, double> travel()
+    {
+        return make_pair(0, 0);
+    }
+};
+
+bool initMap()
 {
     string line;
     while (getline(cin, line))
@@ -14,13 +40,25 @@ bool readUntilOK()
         {
             return true;
         }
+        map.push_back(line);
     }
     return false;
 }
 
+void readLine()
+{
+    int frame, money;
+    cin >> frame >> money;
+    int numOfWorkingTable;
+    cin >> numOfWorkingTable;
+    for (int i = 0; i < numOfWorkingTable; i++)
+    {
+    }
+}
+
 int main()
 {
-    readUntilOK();
+    initMap();
     puts("OK");
     fflush(stdout);
     int frameID;
