@@ -198,6 +198,20 @@ int main(void)
             for (int j = 0; j < DS; j++)
                 cin >> mutators[i].data[j];
         }
+        for (int i = S; i < N; i++)
+        {
+            int mother = rand() % S;
+            mutators[i] = mutators[mother];
+            if (possibility(gen) > crossRate)
+            {
+                int father = rand() % S;
+                mutators[i].cross(mutators[father]);
+            }
+            if (possibility(gen) > mutateRate)
+            {
+                mutators[i].mutate();
+            }
+        }
         fclose(stdin)
     }
     else
