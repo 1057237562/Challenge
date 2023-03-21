@@ -8,14 +8,11 @@ random_device rd;
 mt19937 gen(rd());
 uniform_real_distribution<float> desti(0.0, 100.0);
 
-uniform_real_distribution<double> dis(-2.0, 6.0);
-uniform_real_distribution<int> pick(0, 9);
+uniform_real_distribution<float> dis(-2.0, 6.0);
 
-uniform_real_distribution<int> binary_pick(0, 1);
+uniform_real_distribution<float> mut(-1.0, 1.0);
 
-uniform_real_distribution<double> mut(-1.0, 1.0);
-
-uniform_real_distribution<double> possibility(0.0, 1.0);
+uniform_real_distribution<float> possibility(0.0, 1.0);
 
 struct Pos
 {
@@ -167,6 +164,7 @@ void SA()
 
 int main(void)
 {
+    srand(time(0));
     int cnt = 0;
     while (++cnt)
     {
