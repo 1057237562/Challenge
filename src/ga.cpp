@@ -35,7 +35,7 @@ struct Pos
         return {x - pos.x, y - pos.y};
     }
 
-    Pos operator*(const int &mul) const
+    Pos operator*(const double &mul) const
     {
         return {x * mul, y * mul};
     }
@@ -146,15 +146,15 @@ void process()
         mutators[i].dest = destination;
         mutators[i].startDistance = mutators[i].distance();
     }
-    for (int t = 0; t < 10; t++)
+    for (int t = 0; t < 50 * 6; t++)
     {
         for (int i = 0; i < N; i++)
         {
             if (mutators[i].distance() > 0.1)
             {
                 pair<int, double> result = mutators[i].travel();
-                mutators[i].direction += result.second;
-                mutators[i].velocity = Pos::fromRadian(mutators[i].direction) * result.first;
+                mutators[i].direction += result.second * 1.0 / 50.0;
+                mutators[i].velocity = (Pos::fromRadian(mutators[i].direction) * result.first) * (1.0 / 50.0);
                 mutators[i].pos = mutators[i].pos + mutators[i].velocity;
                 mutators[i].timer = t;
             }
