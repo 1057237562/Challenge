@@ -11,7 +11,6 @@ WorkingTable table[51];
 
 RobotBrain robot[4];
 
-
 bool initMap()
 {
     string line;
@@ -26,7 +25,6 @@ bool initMap()
     return false;
 }
 
-
 bool readUntilOK()
 {
     char line[1024];
@@ -39,7 +37,6 @@ bool readUntilOK()
     }
     return false;
 }
-
 
 void readFrame()
 {
@@ -58,7 +55,6 @@ void readFrame()
     readUntilOK();
 }
 
-
 int main()
 {
     initMap();
@@ -71,9 +67,12 @@ int main()
         printf("%d\n", frameID);
         for (int robotId = 0; robotId < 4; robotId++)
         {
-            pair<int, double> result = robot[robotId].travel();
-            printf("forward %d %d\n", robotId, result.first);
-            printf("rotate %d %f\n", robotId, result.second);
+            int f;
+            double r;
+            robot[robotId].setDestination({0, 0});
+            robot[robotId].travel(f, r);
+            printf("forward %d %d\n", robotId, f);
+            printf("rotate %d %f\n", robotId, r);
         }
         printf("OK\n", frameID);
         fflush(stdout);
