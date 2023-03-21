@@ -3,13 +3,16 @@
         {
             "type": "cppbuild",
             "label": "Build",
-            "command": "C:\\Program Files\\MINGW-w64\\bin\\g++.exe",
+            "command": "C:/Dev/MinGW64/bin/g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "main.cpp",
+                "utils.cpp",
+                "robotbrain.cpp",
+                "workingtable.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "${fileDirname}\\main.exe",
                 "-std=c++11"
             ],
             "options": {
