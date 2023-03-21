@@ -50,9 +50,9 @@ public:
     float timeValMultiplier;
     float collisionValMultiplier;
     float angluarVelocity;
-    float linearVelocity;
+    Pos velocity;
     float direction;
-    Pos currentPosition;
+    Pos position;
 
     virtual pair<int, double> travel()
     {
@@ -76,7 +76,7 @@ bool initMap()
     return false;
 }
 
-void readLine()
+void readFrame()
 {
     int frame, money;
     cin >> frame >> money;
@@ -84,6 +84,11 @@ void readLine()
     cin >> numOfWorkingTable;
     for (int i = 0; i < numOfWorkingTable; i++)
     {
+        cin >> table[i].type >> table[i].position.x >> table[i].position.y >> table[i].remainTime >> table[i].resourceState >> table[i].productState;
+    }
+    for (int i = 0; i < 4; i++)
+    {
+        cin >> robot[i].workingTableID >> robot[i].carriedItemType >> robot[i].timeValMultiplier >> robot[i].collisionValMultiplier >> robot[i].angluarVelocity >> robot[i].velocity.x >> robot[i].velocity.y >> robot[i].direction >> robot[i].position.x >> robot[i].position.y;
     }
 }
 
@@ -95,14 +100,13 @@ int main()
     int frameID;
     while (scanf("%d", &frameID) != EOF)
     {
-        readUntilOK();
+        readFrame();
         printf("%d\n", frameID);
-        int lineSpeed = 3;
-        double angleSpeed = 1.5;
         for (int robotId = 0; robotId < 4; robotId++)
         {
-            printf("forward %d %d\n", robotId, lineSpeed);
-            printf("rotate %d %f\n", robotId, angleSpeed);
+            pair<int, double> result = robot[robotId].travel();
+            printf("forward %d %d\n", robotId, result.first);
+            printf("rotate %d %f\n", robotId, result.second);
         }
         printf("OK\n", frameID);
         fflush(stdout);
