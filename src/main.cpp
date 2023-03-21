@@ -1,4 +1,6 @@
 #include <iostream>
+#include <algorithm>
+#include <math.h>
 using namespace std;
 
 vector<string> map;
@@ -6,6 +8,26 @@ vector<string> map;
 struct Pos
 {
     float x, y;
+
+    Pos operator+(const Pos &pos)
+    {
+        return {x + pos.x, y + pos.y};
+    }
+
+    Pos operator-(const Pos &pos)
+    {
+        return {x - pos.x, y - pos.y};
+    }
+
+    float euclidDistance(const Pos &pos)
+    {
+        return sqrtf(powf(x - pos.x, 2) + powf(y - pos.y, 2));
+    }
+
+    float manhattanDistance(const Pos &pos)
+    {
+        return abs(x - pos.x) + abs(y - pos.y);
+    }
 };
 
 struct WorkingTable
@@ -19,17 +41,26 @@ struct WorkingTable
 
 class RobotBrain
 {
+private:
+    Pos destination;
+
 public:
     int workingTableID;
-    Pos destination;
+    int carriedItemType;
+    float timeValMultiplier;
+    float collisionValMultiplier;
+    float angluarVelocity;
+    float linearVelocity;
+    float direction;
     Pos currentPosition;
-    double angle = 0.0;
 
-    pair<int, double> travel()
+    virtual pair<int, double> travel()
     {
         return make_pair(0, 0);
     }
 };
+
+RobotBrain robot[4];
 
 bool initMap()
 {
