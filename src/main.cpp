@@ -52,9 +52,11 @@ public:
     float direction;
     Pos position;
 
-    virtual pair<int, double> travel()
+    pair<int, double> travel()
     {
-        return make_pair(0, 0);
+        Pos diff = destination - position;
+
+        return make_pair(3, 1.5);
     }
 };
 
@@ -76,8 +78,6 @@ bool initMap()
 
 void readFrame()
 {
-    int frame, money;
-    cin >> frame >> money;
     int numOfWorkingTable;
     cin >> numOfWorkingTable;
     for (int i = 0; i < numOfWorkingTable; i++)
@@ -88,6 +88,10 @@ void readFrame()
     {
         cin >> robot[i].workingTableID >> robot[i].carriedItemType >> robot[i].timeValMultiplier >> robot[i].collisionValMultiplier >> robot[i].angluarVelocity >> robot[i].velocity.x >> robot[i].velocity.y >> robot[i].direction >> robot[i].position.x >> robot[i].position.y;
     }
+    string str;
+    getline(cin, str);
+    if (str[0] = 'O' && str[1] == 'K')
+        return;
 }
 
 int main()
@@ -98,6 +102,8 @@ int main()
     int frameID;
     while (scanf("%d", &frameID) != EOF)
     {
+        int money;
+        scanf("%d", &money);
         readFrame();
         printf("%d\n", frameID);
         for (int robotId = 0; robotId < 4; robotId++)
