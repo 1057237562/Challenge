@@ -99,7 +99,7 @@ struct Mutator
     }
 };
 
-const int N = 1000;
+const int N = 10000;
 const int S = 100;
 
 const double crossRate = 0.67;
@@ -179,7 +179,7 @@ int main(void)
         cout << "Processing Batch : #" << cnt << endl;
         for (int i = 0; i < 10; i++)
         {
-            for (int j = 0; j < 1000; j++)
+            for (int j = 0; j < 100; j++)
             {
                 process();
                 SA();
