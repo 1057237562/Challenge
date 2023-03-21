@@ -201,13 +201,19 @@ void SA()
 int main(void)
 {
     srand(time(0));
-    if (freopen("best.ckpt", "r", stdin))
+    ifstream fin;
+    fin.open("best.ckpt", ios::in);
+    if (fin.is_open())
     {
         cout << "Reading Checkpoint" << endl;
         for (int i = 0; i < S; i++)
         {
             for (int j = 0; j < DS; j++)
-                cin >> mutators[i].data[j];
+            {
+                double data;
+                fin >> data;
+                mutators[i].data.push_back(data);
+            }
         }
         for (int i = S; i < N; i++)
         {
@@ -223,7 +229,7 @@ int main(void)
                 mutators[i].mutate();
             }
         }
-        fclose(stdin);
+        fin.close();
     }
     else
     {
@@ -253,14 +259,15 @@ int main(void)
             cout << endl;
 
             cout << "Writing To files..." << endl;
-            freopen("best.ckpt", "w", stdout);
+            ofstream out;
+            out.open("best.ckpt", ios::out);
             for (int i = 0; i < S; i++)
             {
                 for (int j = 0; j < DS; j++)
-                    cout << mutators[i].data[j] << " ";
-                cout << endl;
+                    out << mutators[i].data[j] << " ";
+                out << endl;
             }
-            fclose(stdout);
+            out.close();
         }
     }
 }
