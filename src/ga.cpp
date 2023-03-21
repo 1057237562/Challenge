@@ -18,6 +18,11 @@ struct Pos
         return {x - pos.x, y - pos.y};
     }
 
+    Pos operator*(const int &mul) const
+    {
+        return {x * mul, y * mul};
+    }
+
     float euclidDistance(const Pos &pos) const
     {
         return sqrtf(powf(x - pos.x, 2) + powf(y - pos.y, 2));
@@ -26,6 +31,11 @@ struct Pos
     float manhattanDistance(const Pos &pos) const
     {
         return abs(x - pos.x) + abs(y - pos.y);
+    }
+
+    static Pos fromRadian(float radian)
+    {
+        return {cosf(radian), sin(radian)};
     }
 };
 
@@ -58,7 +68,7 @@ Mutator mutators[N];
 
 random_device rd;
 mt19937 gen(rd());
-uniform_real_distribution<double> desti(0.0, 100.0);
+uniform_real_distribution<float> desti(0.0, 100.0);
 
 uniform_real_distribution<double> dis(-2.0, 6.0);
 
@@ -86,9 +96,13 @@ void process()
     {
         for (int i = 0; i < N; i++)
         {
-            
+            pair<int, double> result = mutators[i].travel();
+            mutators[i].direction += result.second;
+            mutators[i].velocity = Pos::fromRadian(mutators[i].direction) * result.first;
+            mutators[i].pos = mutators[i].pos + mutators[i].velocity;
         }
     }
+    sort(mutators, mutators + N);
 }
 
 int main(void)
