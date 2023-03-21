@@ -1,9 +1,7 @@
-#include <iostream>
-#include <algorithm>
-#include <math.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-vector<string> map;
+vector<string> maps;
 
 struct Pos
 {
@@ -71,7 +69,7 @@ bool initMap()
         {
             return true;
         }
-        map.push_back(line);
+        maps.push_back(line);
     }
     return false;
 }
