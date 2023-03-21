@@ -14,6 +14,13 @@ uniform_real_distribution<float> mut(-0.1, 0.1);
 
 uniform_real_distribution<float> possibility(0.0, 1.0);
 
+const int N = 10000;
+const int S = 100;
+const int DS = 8;
+
+const double crossRate = 0.67;
+const double mutateRate = 0.1;
+
 struct Pos
 {
     float x, y;
@@ -47,6 +54,22 @@ struct Pos
     {
         return {cosf(radian), sin(radian)};
     }
+
+    float length() const
+    {
+        return sqrtf(powf(x, 2) + powf(y, 2));
+    }
+
+    Pos normalize() const
+    {
+        float l = length();
+        return {x / l, y / l};
+    }
+
+    float dot(const Pos &b) const
+    {
+        return x * b.x + y * b.y;
+    }
 };
 
 struct Mutator
@@ -63,20 +86,21 @@ struct Mutator
     pair<int, double> travel()
     {
         Pos diff = dest - pos;
-        int f = min(6, max(-2, (int)(data[0] * diff.x + data[1] * diff.y + data[2] * velocity.x + data[3] * velocity.y + data[4] * direction)));
-        double r = min(M_PI, max(-M_PI, data[5] * diff.x + data[6] * diff.y + data[7] * velocity.x + data[8] * velocity.y + data[9] * direction));
+        float directionDiff = acosf(diff.normalize().dot(Pos::fromRadian(direction)));
+        int f = min(6, max(-2, (int)(data[0] * diff.length() + data[1] * directionDiff)));
+        double r = min(M_PI, max(-M_PI, data[2] * diff.length() + data[3] * directionDiff));
         return make_pair(f, r);
     }
 
     void mutate()
     {
-        int sbit = rand() % 10;
+        int sbit = rand() % DS;
         data[sbit] += mut(gen);
     }
 
     void cross(const Mutator &fa)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < DS; i++)
         {
             if (rand() % 2)
             {
@@ -99,12 +123,6 @@ struct Mutator
     }
 };
 
-const int N = 10000;
-const int S = 100;
-
-const double crossRate = 0.67;
-const double mutateRate = 0.1;
-
 Mutator mutators[N];
 
 void init()
@@ -112,7 +130,7 @@ void init()
 
     for (int i = 0; i < N; i++)
     {
-        for (int j = 0; j < 10; j++)
+        for (int j = 0; j < DS; j++)
         {
             mutators[i].data.push_back(dis(gen));
         }
@@ -179,7 +197,7 @@ int main(void)
         cout << "Processing Batch : #" << cnt << endl;
         for (int i = 0; i < 10; i++)
         {
-            for (int j = 0; j < 100; j++)
+            for (int j = 0; j < 10; j++)
             {
                 process();
                 SA();
@@ -187,7 +205,7 @@ int main(void)
             cout << "■";
         }
         cout << endl
-             << "   Min Distance : " << mutators[0].distance() << "/" << mutators[0].startDistance << endl;
+             << "   Min Distance : " << mutators[0].distance() << "/" << mutators[0].startDistance << ":" << mutators[0].timer << endl;
         if (!(cnt % 10))
         {
             cout << "Best Model : " << endl;
