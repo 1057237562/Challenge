@@ -6,13 +6,13 @@ using namespace std;
 
 random_device rd;
 mt19937 gen(rd());
-uniform_real_distribution<float> desti(0.0, 100.0);
+uniform_real_distribution<double> desti(0.0, 100.0);
 
-uniform_real_distribution<float> dis(-2.0, 6.0);
+uniform_real_distribution<double> dis(-2.0, 6.0);
 
-uniform_real_distribution<float> mut(-0.1, 0.1);
+uniform_real_distribution<double> mut(-0.1, 0.1);
 
-uniform_real_distribution<float> possibility(0.0, 1.0);
+uniform_real_distribution<double> possibility(0.0, 1.0);
 
 const int N = 10000;
 const int S = 100;
@@ -23,7 +23,7 @@ const double mutateRate = 0.1;
 
 struct Pos
 {
-    float x, y;
+    double x, y;
 
     Pos operator+(const Pos &pos) const
     {
@@ -40,33 +40,38 @@ struct Pos
         return {x * mul, y * mul};
     }
 
-    float euclidDistance(const Pos &pos) const
+    Pos operator/(const double &mul) const
+    {
+        return {x / mul, y / mul};
+    }
+
+    double euclidDistance(const Pos &pos) const
     {
         return sqrtf(powf(x - pos.x, 2) + powf(y - pos.y, 2));
     }
 
-    float manhattanDistance(const Pos &pos) const
+    double manhattanDistance(const Pos &pos) const
     {
         return abs(x - pos.x) + abs(y - pos.y);
     }
 
-    static Pos fromRadian(float radian)
+    static Pos fromRadian(double radian)
     {
         return {cosf(radian), sin(radian)};
     }
 
-    float length() const
+    double length() const
     {
         return sqrtf(powf(x, 2) + powf(y, 2));
     }
 
     Pos normalize() const
     {
-        float l = length();
+        double l = length();
         return {x / l, y / l};
     }
 
-    float dot(const Pos &b) const
+    double dot(const Pos &b) const
     {
         return x * b.x + y * b.y;
     }
@@ -77,19 +82,18 @@ struct Mutator
     Pos dest;
     Pos pos;
     Pos velocity;
-    float direction = 0.0;
+    double direction = 0.0;
     int timer = 0;
 
     vector<double> data;
-    float startDistance;
+    double startDistance;
 
-    pair<int, double> travel()
+    void travel(int &f,double &r)
     {
         Pos diff = dest - pos;
-        float directionDiff = acosf(diff.normalize().dot(Pos::fromRadian(direction)));
-        int f = min(6, max(-2, (int)(data[0] * diff.length() + data[1] * directionDiff)));
-        double r = min(M_PI, max(-M_PI, data[2] * diff.length() + data[3] * directionDiff));
-        return make_pair(f, r);
+        double directionDiff = acosf(diff.normalize().dot(Pos::fromRadian(direction)));
+        f = min(6, max(-2, (int)(data[0] * diff.length() + data[1] * directionDiff)));
+        r = min(M_PI, max(-M_PI, data[2] * diff.length() + data[3] * directionDiff));
     }
 
     void mutate()
@@ -109,7 +113,7 @@ struct Mutator
         }
     }
 
-    float distance() const
+    double distance() const
     {
         return dest.euclidDistance(pos);
     }
@@ -120,6 +124,16 @@ struct Mutator
             return distance() / startDistance < b.distance() / b.startDistance;
         else
             return timer < b.timer;
+    }
+
+    void fun1(const int &t){
+        static int res1;
+        static double res2;
+        travel(res1,res2);
+        direction += res2 / 50.0;
+        velocity = (Pos::fromRadian(direction) * res1) / 50.0;
+        pos = pos + velocity;
+        timer = t;
     }
 };
 
@@ -152,11 +166,7 @@ void process()
         {
             if (mutators[i].distance() > 0.1)
             {
-                pair<int, double> result = mutators[i].travel();
-                mutators[i].direction += result.second * 1.0 / 50.0;
-                mutators[i].velocity = (Pos::fromRadian(mutators[i].direction) * result.first) * (1.0 / 50.0);
-                mutators[i].pos = mutators[i].pos + mutators[i].velocity;
-                mutators[i].timer = t;
+                mutators[i].fun1(t);
             }
         }
     }

@@ -10,7 +10,10 @@
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-std=c++11"
+                "-std=c++11",
+                "-O2",
+                "-O3",
+                "-Ofast"
             ],
             "options": {
                 "cwd": "${fileDirname}"
