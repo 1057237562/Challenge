@@ -14,7 +14,7 @@ uniform_real_distribution<double> mut(-0.1, 0.1);
 
 uniform_real_distribution<double> possibility(0.0, 1.0);
 
-const int N = 10000;
+const int N = 1000;
 const int S = 100;
 const int DS = 4;
 
@@ -88,7 +88,7 @@ struct Mutator
     vector<double> data;
     double startDistance;
 
-    void travel(int &f,double &r)
+    void travel(int &f, double &r)
     {
         Pos diff = dest - pos;
         double directionDiff = acosf(diff.normalize().dot(Pos::fromRadian(direction)));
@@ -126,10 +126,11 @@ struct Mutator
             return timer < b.timer;
     }
 
-    void fun1(const int &t){
+    void fun1(const int &t)
+    {
         static int res1;
         static double res2;
-        travel(res1,res2);
+        travel(res1, res2);
         direction += res2 / 50.0;
         velocity = (Pos::fromRadian(direction) * res1) / 50.0;
         pos = pos + velocity;
@@ -246,7 +247,7 @@ int main(void)
         if (!(cnt % 10))
         {
             cout << "Best Model : " << endl;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < DS; i++)
                 cout
                     << mutators[0].data[i] << " ";
             cout << endl;
