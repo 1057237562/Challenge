@@ -16,7 +16,7 @@ uniform_real_distribution<double> possibility(0.0, 1.0);
 
 const int N = 1000;
 const int S = 100;
-const int DS = 16;
+const int DS = 28;
 
 const double crossRate = 0.67;
 const double mutateRate = 0.1;
@@ -96,13 +96,13 @@ struct Mutator
         float arg[4];
         for (int i = 0; i < 4; i++)
         {
-            arg[i] = data[i * 2] * n1 + data[i * 2 + 1] * directionDiff;
+            arg[i] = data[i * 5] * position.x + data[i * 5 + 1] * position.y + data[i * 5 + 2] * destination.x + data[i * 5 + 3] * destination.y + data[i * 5 + 4] * direction;
         }
         f = r = 0;
         for (int i = 0; i < 4; i++)
         {
-            f += arg[i] * data[8 + i * 2];
-            r += arg[i] * data[9 + i * 2];
+            f += arg[i] * data[20 + i * 2];
+            r += arg[i] * data[21 + i * 2];
         }
         f = min(6, max(-2, f));
         r = min(M_PI, max(-M_PI, r));
