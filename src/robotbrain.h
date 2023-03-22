@@ -1,11 +1,15 @@
 #ifndef _RB_H_
 #define _RB_H_
 
-#include "scheduler.h"
+#include<bits/stdc++.h>
+
+#define M_PI 3.14159265358979323846
+
+using std::min;
+using std::max;
 
 class RobotBrain
 {
-    friend class Scheduler;
 
 private:
     Pos destination;

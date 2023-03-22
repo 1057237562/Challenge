@@ -60,6 +60,31 @@ void readFrame()
     readUntilOK();
 }
 
+inline void beginFrame(const int &frameID)
+{
+    printf("%d\n", frameID);
+}
+
+/*
+直接把动作打印出去
+示例用法printRobotInst(Foward,0,2,3);
+*/
+inline void printRobotInst(const RobotInst &inst, const int robotID, const double &arg1 = NAN, const double &arg2 = 0)
+{
+    if (arg1 == NAN)
+    {
+        printf("%s %d\n", RobotInstString[inst], robotID);
+    }
+    else
+    {
+        printf("%s %d %lf %lf\n", RobotInstString[inst], robotID, arg1, arg2);
+    }
+}
+
+inline void endFrame()
+{
+    printf("OK\n");
+}
 
 int main()
 {

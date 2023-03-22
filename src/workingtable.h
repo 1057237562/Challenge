@@ -2,12 +2,12 @@
 #define _WT_H_
 
 
-#include "scheduler.h"
+#include "utils.h"
 
+class Scheduler;
 class WorkingTable
 {
     friend class Scheduler;
-
 private:
 
 public:
