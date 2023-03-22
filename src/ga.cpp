@@ -16,7 +16,7 @@ uniform_real_distribution<double> possibility(0.0, 1.0);
 
 const int N = 1000;
 const int S = 100;
-const int DS = 4;
+const int DS = 16;
 
 const double crossRate = 0.67;
 const double mutateRate = 0.1;
@@ -79,8 +79,8 @@ struct Pos
 
 struct Mutator
 {
-    Pos dest;
-    Pos pos;
+    Pos destination;
+    Pos position;
     Pos velocity;
     double direction = 0.0;
     int timer = 0;
@@ -90,10 +90,22 @@ struct Mutator
 
     void travel(int &f, double &r)
     {
-        Pos diff = dest - pos;
+        Pos diff = destination - position;
+        double n1 = diff.length();
         double directionDiff = acosf(diff.normalize().dot(Pos::fromRadian(direction)));
-        f = min(6, max(-2, (int)(data[0] * diff.length() + data[1] * directionDiff)));
-        r = min(M_PI, max(-M_PI, data[2] * diff.length() + data[3] * directionDiff));
+        float arg[4];
+        for (int i = 0; i < 4; i++)
+        {
+            arg[i] = data[i * 2] * n1 + data[i * 2 + 1] * directionDiff;
+        }
+        f = r = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            f += arg[i] * data[8 + i * 2];
+            r += arg[i] * data[9 + i * 2];
+        }
+        f = min(6, max(-2, f));
+        r = min(M_PI, max(-M_PI, r));
     }
 
     void mutate()
@@ -115,7 +127,7 @@ struct Mutator
 
     double distance() const
     {
-        return dest.euclidDistance(pos);
+        return destination.euclidDistance(position);
     }
 
     bool operator<(const Mutator &b)
@@ -133,7 +145,7 @@ struct Mutator
         travel(res1, res2);
         direction += res2 / 50.0;
         velocity = (Pos::fromRadian(direction) * res1) / 50.0;
-        pos = pos + velocity;
+        position = position + velocity;
         timer = t;
     }
 };
@@ -158,7 +170,7 @@ void process()
     Pos destination = {desti(gen), desti(gen)};
     for (int i = 0; i < N; i++)
     {
-        mutators[i].dest = destination;
+        mutators[i].destination = destination;
         mutators[i].startDistance = mutators[i].distance();
     }
     for (int t = 0; t < 50 * 6; t++)

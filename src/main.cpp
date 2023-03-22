@@ -1,30 +1,64 @@
 #include <bits/stdc++.h>
+
+#define M_PI 3.14159265358979323846
+
 using namespace std;
 
 vector<string> maps;
 
 struct Pos
 {
-    float x, y;
+    double x, y;
 
-    Pos operator+(const Pos &pos)
+    Pos operator+(const Pos &pos) const
     {
         return {x + pos.x, y + pos.y};
     }
 
-    Pos operator-(const Pos &pos)
+    Pos operator-(const Pos &pos) const
     {
         return {x - pos.x, y - pos.y};
     }
 
-    float euclidDistance(const Pos &pos)
+    Pos operator*(const double &mul) const
+    {
+        return {x * mul, y * mul};
+    }
+
+    Pos operator/(const double &mul) const
+    {
+        return {x / mul, y / mul};
+    }
+
+    double euclidDistance(const Pos &pos) const
     {
         return sqrtf(powf(x - pos.x, 2) + powf(y - pos.y, 2));
     }
 
-    float manhattanDistance(const Pos &pos)
+    double manhattanDistance(const Pos &pos) const
     {
         return abs(x - pos.x) + abs(y - pos.y);
+    }
+
+    static Pos fromRadian(double radian)
+    {
+        return {cosf(radian), sin(radian)};
+    }
+
+    double length() const
+    {
+        return sqrtf(powf(x, 2) + powf(y, 2));
+    }
+
+    Pos normalize() const
+    {
+        double l = length();
+        return {x / l, y / l};
+    }
+
+    double dot(const Pos &b) const
+    {
+        return x * b.x + y * b.y;
     }
 };
 
@@ -51,14 +85,26 @@ public:
 
     Pos destination;
 
-    double data[10];
+    double data[16] = {0.861136, -1.93058, -2.10806, 3.34344, -0.863897, 1.27084, 4.77327, 2.83506, 4.38575, -0.367908, 2.4501, 2.92614, 2.25585, -2.45845, 6.02638, 0.897712};
 
-    pair<int, double> travel()
+    void travel(int &f, double &r)
     {
         Pos diff = destination - position;
-        int f = max(6, min(-2, (int)(data[0] * diff.x + data[1] * diff.y + data[2] * velocity.x + data[3] * velocity.y + data[4] * direction)));
-        double r = max(M_PI, min(-M_PI, data[5] * diff.x + data[6] * diff.y + data[7] * velocity.x + data[8] * velocity.y + data[9] * direction));
-        return make_pair(f, r);
+        double n1 = diff.length();
+        double directionDiff = acosf(diff.normalize().dot(Pos::fromRadian(direction)));
+        float arg[4];
+        for (int i = 0; i < 4; i++)
+        {
+            arg[i] = data[i * 2] * n1 + data[i * 2 + 1] * directionDiff;
+        }
+        f = r = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            f += arg[i] * data[8 + i * 2];
+            r += arg[i] * data[9 + i * 2];
+        }
+        f = min(6, max(-2, f));
+        r = min(M_PI, max(-M_PI, r));
     }
 };
 
@@ -120,9 +166,12 @@ int main()
         printf("%d\n", frameID);
         for (int robotId = 0; robotId < 4; robotId++)
         {
-            pair<int, double> result = robot[robotId].travel();
-            printf("forward %d %d\n", robotId, result.first);
-            printf("rotate %d %f\n", robotId, result.second);
+            int f;
+            double r;
+            robot[robotId].destination = {0, 0};
+            robot[robotId].travel(f, r);
+            printf("forward %d %d\n", robotId, f);
+            printf("rotate %d %f\n", robotId, r);
         }
         printf("OK\n", frameID);
         fflush(stdout);
