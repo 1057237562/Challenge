@@ -1,5 +1,7 @@
-.vscode\
-replay\
+.vscode/
+replay/
 *.exe
-Example\
+Example/
 .vscode/c_cpp_properties.json
+**/.vscode/
+.vscode/tasks.json
