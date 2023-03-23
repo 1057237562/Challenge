@@ -213,7 +213,7 @@ public:
             for (Quadruple quad : possibleRoute)
             {
                 double estimateReachTime = robot[robotId]->position.euclidDistance(table[quad.a].position) * 6.0 / 50.0;
-                double estimateBenefit = (quad.c + estimateReachTime) / quad.d;
+                double estimateBenefit = quad.d / (quad.c + estimateReachTime);
                 if (maxBenefit < estimateBenefit)
                 {
                     maxBenefit = estimateBenefit;
@@ -281,6 +281,7 @@ void readFrame()
     cin >> numOfWorkingTable;
     for (int i = 0; i < numOfWorkingTable; i++)
     {
+        // LOGGER << table[i].type << " " << table[i].productState << " " << table[i].book << endl;
         cin >> table[i].type >> table[i].position.x >> table[i].position.y >> table[i].remainTime >> table[i].resourceState >> table[i].productState;
     }
     for (int i = 0; i < 4; i++)
