@@ -4,8 +4,8 @@
 
 using namespace std;
 
-vector<string> maps;
-
+char maps[100][100];
+int numOfWorkingTable;
 struct Pos
 {
     double x, y;
@@ -71,6 +71,14 @@ struct WorkingTable
     bool productState;
 } table[51];
 
+class Scheduler
+{
+public:
+    virtual void decide()
+    {
+    }
+};
+
 class RobotBrain
 {
 public:
@@ -87,6 +95,14 @@ public:
 
     double data[16] = {0.37761, -2.5042, -2.13474, 4.13467, -1.0751, 1.28702, 5.05836, 3.1689, 4.75077, 0.166093, 3.04023, 3.14458, 1.92327, -1.96513, 6.50947, 0.894788};
 
+    virtual void travel(int &f, double &r)
+    {
+    }
+};
+
+class GARobotBrain : public RobotBrain
+{
+public:
     void travel(int &f, double &r)
     {
         Pos diff = destination - position;
@@ -108,10 +124,33 @@ public:
     }
 };
 
-RobotBrain robot[4];
+RobotBrain *robot[4] = {new GARobotBrain(), new GARobotBrain(), new GARobotBrain(), new GARobotBrain()};
+
+const int purchase[10] = {0, 0, 0, 0, 3, 5, 6, 56, 64, 127}; // Bitmasked
+
+class GreedySchedulerV1 : Scheduler
+{
+public:
+    void decide()
+    {
+        for (int i = 0; i < numOfWorkingTable; i++)
+        {
+            
+        }
+    }
+};
+
+Scheduler *scheduler = new GreedySchedulerV1();
 
 bool initMap()
 {
+    for (int i = 0; i < 100; i++)
+    {
+        for (int j = 0; j < 100; j++)
+        {
+            maps[i][99 - j] = getchar();
+        }
+    }
     string line;
     while (getline(cin, line))
     {
@@ -119,7 +158,6 @@ bool initMap()
         {
             return true;
         }
-        maps.push_back(line);
     }
     return false;
 }
@@ -141,7 +179,6 @@ void readFrame()
 {
     int money;
     cin >> money;
-    int numOfWorkingTable;
     cin >> numOfWorkingTable;
     for (int i = 0; i < numOfWorkingTable; i++)
     {
@@ -163,13 +200,13 @@ int main()
     while (scanf("%d", &frameID) != EOF)
     {
         readFrame();
+        scheduler->decide();
         printf("%d\n", frameID);
         for (int robotId = 0; robotId < 4; robotId++)
         {
             int f;
             double r;
-            robot[robotId].destination = {0, 0};
-            robot[robotId].travel(f, r);
+            robot[robotId]->travel(f, r);
             printf("forward %d %d\n", robotId, f);
             printf("rotate %d %f\n", robotId, r);
         }

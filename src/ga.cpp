@@ -75,6 +75,8 @@ struct Pos
     {
         return x * b.x + y * b.y;
     }
+
+    
 };
 
 struct Mutator
@@ -87,6 +89,14 @@ struct Mutator
 
     vector<double> data;
     double startDistance;
+    const double density = 20;
+    const double force = 200;
+    double radius = 0.45;
+
+    double getAcceleration()
+    {
+        return force / (M_PI * radius * radius * density);
+    }
 
     void travel(int &f, double &r)
     {
@@ -144,7 +154,7 @@ struct Mutator
         static double res2;
         travel(res1, res2);
         direction += res2 / 50.0;
-        velocity = (Pos::fromRadian(direction) * res1) / 50.0;
+        velocity = (velocity + (Pos::fromRadian(direction) * getAcceleration()) / 50.0);
         position = position + velocity;
         timer = t;
     }
