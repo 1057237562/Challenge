@@ -12,6 +12,8 @@ enum ACTION
 
 char maps[100][100];
 int numOfWorkingTable;
+
+ofstream LOGGER("output.log", ios::out);
 struct Pos
 {
     double x, y;
@@ -77,14 +79,12 @@ struct WorkingTable
     bool productState;
 
     bool book = false;
-    int resultState;
+    int resultState = 0;
 } table[51];
 
 class Scheduler
 {
 public:
-    vector<int> idleRobots;
-
     virtual void decide()
     {
     }
@@ -163,45 +163,53 @@ double f(double x, double maxX, double minRate)
 
 struct Quadruple
 {
-    int a, b, c;
-    double d;
+    int a, b;
+    double c, d;
 };
 
-class GreedySchedulerV1 : Scheduler
+class GreedySchedulerV1 : public Scheduler
 {
 public:
     void decide()
     {
-        if (idleRobots.empty())
-            return;
-        for (int robotId : idleRobots)
+        for (int robotId = 0; robotId < 4; robotId++)
         {
+            if (!robot[robotId]->destination.empty())
+                continue;
             vector<Quadruple> possibleRoute;
             for (int i = 0; i < numOfWorkingTable; i++)
             {
                 if (table[i].book)
                     continue;
-                if (table[i].productState || table[i].remainTime != -1)
+                if (table[i].productState)
                 {
-                    int estimateTimeCost = INT_MAX;
-                    int buyerId = 0;
+                    double minTimeCost = DBL_MAX;
+                    int buyerId = -1;
                     for (int j = 0; j < numOfWorkingTable; j++)
                     {
                         if (table[j].book)
                             continue;
-                        if (purchase[table[j].type] & (1 << table[i].type) && !(table[i].resourceState & (1 << table[i].type)))
+                        if ((purchase[table[j].type] & (1 << table[i].type)) != 0 && (table[j].resourceState & (1 << table[i].type)) == 0 && (table[j].resultState & (1 << table[i].type)) == 0)
                         {
-                            estimateTimeCost = min(estimateTimeCost, table[j].position.euclidDistance(table[i].position) / 6.0 * 50.0);
+                            double estimateTimeCost = table[j].position.euclidDistance(table[i].position) / 6.0 * 50.0;
+                            if (estimateTimeCost < minTimeCost)
+                            {
+                                minTimeCost = estimateTimeCost;
+                                buyerId = j;
+                            }
                         }
                     }
-                    estimateTimeCost += table[i].remainTime;
-                    double expectedBenefit = f(value[table[i].type] - cost[table[i].type], 9000, 0.8);
-                    possibleRoute.push_back({i, buyerId, estimateTimeCost, expectedBenefit});
+                    double expectedBenefit = (value[table[i].type] - cost[table[i].type]) * f(minTimeCost, 9000, 0.8);
+                    minTimeCost += table[i].remainTime;
+                    if (buyerId != -1)
+                        possibleRoute.push_back({i, buyerId, minTimeCost, expectedBenefit});
                 }
             }
 
             double maxBenefit = 0.0f;
             Quadruple ans;
+            if (possibleRoute.empty())
+                continue;
             for (Quadruple quad : possibleRoute)
             {
                 double estimateReachTime = robot[robotId]->position.euclidDistance(table[quad.a].position) * 6.0 / 50.0;
@@ -213,18 +221,23 @@ public:
                 }
             }
 
-            robot[robotId]->destination.push(ans.a);
-            robot[robotId]->destination.push(ans.b);
+            table[ans.a].book = true;
+            table[ans.b].resultState |= (1 << table[ans.a].type);
+
+            LOGGER << "Assign Job : " << robotId << " BUY " << table[ans.a].type << " SELL " << table[ans.b].type << ":" << (purchase[table[ans.a].type] & (1 << table[ans.b].type)) << endl;
+            LOGGER << "After bit mask : " << table[ans.b].resultState << endl;
+
+            robot[robotId]->destination.push(table[ans.a].position);
+            robot[robotId]->destination.push(table[ans.b].position);
             robot[robotId]->action.push(BUY);
             robot[robotId]->action.push(SELL);
         }
-        idleRobots.clear();
     }
 };
 
 Scheduler *scheduler = new GreedySchedulerV1();
 
-bool initMap()
+bool init()
 {
     for (int i = 0; i < 100; i++)
     {
@@ -233,6 +246,10 @@ bool initMap()
             maps[i][99 - j] = getchar();
         }
     }
+    /*for (int i = 0; i < 4; i++)
+    {
+        scheduler->idleRobots.push_back(i);
+    }*/
     string line;
     while (getline(cin, line))
     {
@@ -268,20 +285,21 @@ void readFrame()
     }
     for (int i = 0; i < 4; i++)
     {
-        cin >> robot[i].workingTableID >> robot[i].carriedItemType >> robot[i].timeValMultiplier >> robot[i].collisionValMultiplier >> robot[i].angluarVelocity >> robot[i].velocity.x >> robot[i].velocity.y >> robot[i].direction >> robot[i].position.x >> robot[i].position.y;
+        cin >> robot[i]->workingTableID >> robot[i]->carriedItemType >> robot[i]->timeValMultiplier >> robot[i]->collisionValMultiplier >> robot[i]->angluarVelocity >> robot[i]->velocity.x >> robot[i]->velocity.y >> robot[i]->direction >> robot[i]->position.x >> robot[i]->position.y;
     }
     readUntilOK();
 }
 
 int main()
 {
-    initMap();
+    init();
     puts("OK");
     fflush(stdout);
     int frameID;
     while (scanf("%d", &frameID) != EOF)
     {
         readFrame();
+        LOGGER << frameID << endl;
         printf("%d\n", frameID);
         for (int robotId = 0; robotId < 4; robotId++)
         {
@@ -291,12 +309,21 @@ int main()
                 {
                 case BUY:
                     printf("buy %d\n", robotId);
+                    table[robot[robotId]->workingTableID].book = false;
                     break;
 
                 case SELL:
                     printf("sell %d\n", robotId);
+                    table[robot[robotId]->workingTableID].resultState ^= (1 << robot[robotId]->carriedItemType);
+                    table[robot[robotId]->workingTableID].resourceState |= (1 << robot[robotId]->carriedItemType);
                     break;
                 }
+                robot[robotId]->destination.pop();
+                robot[robotId]->action.pop();
+                /*if (robot[robotId]->destination.empty())
+                {
+                    scheduler->idleRobots.push_back(robotId);
+                }*/
             }
         }
         scheduler->decide();
