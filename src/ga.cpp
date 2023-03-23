@@ -88,6 +88,9 @@ struct Mutator
     vector<double> data;
     double startDistance;
 
+    const double density = 20;
+    double radius = 0.45; // Or 0.53
+
     void travel(int &f, double &r)
     {
         Pos diff = dest - pos;
