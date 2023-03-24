@@ -68,7 +68,17 @@ struct Pos
     {
         return x * b.x + y * b.y;
     }
+
+    double cross(const Pos &b) const
+    {
+        return x * b.y - b.x * y;
+    }
 };
+
+double Acos(double x)
+{
+    return acos(x);
+}
 
 struct WorkingTable
 {
@@ -105,8 +115,6 @@ public:
     list<Pos> destination;
     queue<int> action;
 
-    double data[16] = {0.37761, -2.5042, -2.13474, 4.13467, -1.0751, 1.28702, 5.05836, 3.1689, 4.75077, 0.166093, 3.04023, 3.14458, 1.92327, -1.96513, 6.50947, 0.894788};
-
     virtual void travel(int &f, double &r)
     {
     }
@@ -120,11 +128,13 @@ public:
 class GARobotBrain : public RobotBrain
 {
 public:
+    double data[16] = {0.37761, -2.5042, -2.13474, 4.13467, -1.0751, 1.28702, 5.05836, 3.1689, 4.75077, 0.166093, 3.04023, 3.14458, 1.92327, -1.96513, 6.50947, 0.894788};
+
     void travel(int &f, double &r)
     {
         Pos diff = destination.front() - position;
         double n1 = diff.length();
-        double directionDiff = acosf(diff.normalize().dot(Pos::fromRadian(direction)));
+        double directionDiff = asinf(diff.normalize().cross(Pos::fromRadian(direction)));
         float arg[4];
         for (int i = 0; i < 4; i++)
         {
@@ -136,12 +146,36 @@ public:
             f += arg[i] * data[8 + i * 2];
             r += arg[i] * data[9 + i * 2];
         }
-        f = min(6, max(-2, f));
-        r = min(M_PI, max(-M_PI, r));
+
+        r = min(M_PI, max(-M_PI, -6 * directionDiff));
+        f = max(-2, min(6, f) - (int)abs(r));
     }
 };
 
-RobotBrain *robot[4] = {new GARobotBrain(), new GARobotBrain(), new GARobotBrain(), new GARobotBrain()};
+class GreedyRobotBrain : public RobotBrain
+{
+public:
+    void travel(int &f, double &r)
+    {
+        Pos diff = destination.front() - position;
+        double n1 = diff.length();
+        double directionDiff = asin(diff.normalize().cross(Pos::fromRadian(direction)));
+
+        /*double preval = 0;
+        if (destination.size() > 1)
+        {
+            list<Pos>::iterator nxt = destination.begin();
+            nxt++;
+            Pos diff2 = *(nxt)-destination.front();
+            preval = max(0.0, abs(6 * asin(diff2.normalize().cross(Pos::fromRadian(direction)))) - diff.length());
+        }*/
+
+        r = min(M_PI, max(-M_PI, -6 * directionDiff));
+        f = max(-2, min(6, (int)(6 * n1)) - (int)abs(r));
+    }
+};
+
+RobotBrain *robot[4] = {new GreedyRobotBrain(), new GreedyRobotBrain(), new GreedyRobotBrain(), new GreedyRobotBrain()};
 
 const int purchase[10] = {0, 0, 0, 0, 6, 10, 12, 112, 128, 254}; // Bitmasked
 const int craftTime[10] = {0, 50, 50, 50, 500, 500, 500, 1000, 1, 1};
@@ -200,10 +234,12 @@ public:
                             }
                         }
                     }
+                    // double expectedBenefit = value[table[i].type];
                     double expectedBenefit = (value[table[i].type] - cost[table[i].type]) * f(minTimeCost, 9000, 0.8);
                     if (purchase[table[buyerId].type] == table[buyerId].resourceState | (1 << table[i].type))
                     {
-                        expectedBenefit += value[table[buyerId].type] - cost[table[buyerId].type];
+                        // expectedBenefit += (value[table[buyerId].type] - cost[table[buyerId].type]) / 2;
+                        // expectedBenefit += craftTime[table[buyerId].type];
                     }
                     minTimeCost += table[i].remainTime;
                     // minTimeCost -= craftTime[table[buyerId].type];

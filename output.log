@@ -357,13 +357,13 @@ After bit mask : 8
 349
 350
 351
+Assign Job : 1 BUY 1 SELL 4:0
+After bit mask : 2
 352
 353
 354
 355
 356
-Assign Job : 2 BUY 1 SELL 4:0
-After bit mask : 2
 357
 358
 359
@@ -380,6 +380,8 @@ After bit mask : 2
 370
 371
 372
+Assign Job : 0 BUY 1 SELL 5:0
+After bit mask : 2
 373
 374
 375
@@ -390,6 +392,8 @@ After bit mask : 2
 380
 381
 382
+Assign Job : 2 BUY 2 SELL 6:0
+After bit mask : 4
 383
 384
 385
@@ -416,6 +420,8 @@ After bit mask : 2
 406
 407
 408
+Assign Job : 3 BUY 2 SELL 4:0
+After bit mask : 4
 409
 410
 411
@@ -461,8 +467,6 @@ After bit mask : 2
 451
 452
 453
-Assign Job : 1 BUY 1 SELL 4:0
-After bit mask : 2
 454
 455
 456
@@ -504,8 +508,6 @@ After bit mask : 2
 492
 493
 494
-Assign Job : 0 BUY 1 SELL 5:0
-After bit mask : 2
 495
 496
 497
@@ -519,6 +521,8 @@ After bit mask : 2
 505
 506
 507
+Assign Job : 1 BUY 1 SELL 5:0
+After bit mask : 2
 508
 509
 510
@@ -539,6 +543,8 @@ After bit mask : 2
 525
 526
 527
+Assign Job : 0 BUY 1 SELL 4:0
+After bit mask : 2
 528
 529
 530
@@ -605,8 +611,6 @@ After bit mask : 2
 591
 592
 593
-Assign Job : 1 BUY 2 SELL 6:0
-After bit mask : 4
 594
 595
 596
@@ -642,6 +646,8 @@ After bit mask : 4
 626
 627
 628
+Assign Job : 2 BUY 3 SELL 5:0
+After bit mask : 8
 629
 630
 631
@@ -684,8 +690,6 @@ After bit mask : 4
 668
 669
 670
-Assign Job : 0 BUY 1 SELL 4:0
-After bit mask : 2
 671
 672
 673
@@ -768,8 +772,6 @@ After bit mask : 2
 750
 751
 752
-Assign Job : 3 BUY 1 SELL 5:0
-After bit mask : 2
 753
 754
 755
@@ -816,6 +818,8 @@ After bit mask : 2
 796
 797
 798
+Assign Job : 1 BUY 2 SELL 4:0
+After bit mask : 4
 799
 800
 801
@@ -836,6 +840,8 @@ After bit mask : 2
 816
 817
 818
+Assign Job : 0 BUY 1 SELL 5:0
+After bit mask : 2
 819
 820
 821
@@ -913,10 +919,10 @@ After bit mask : 2
 893
 894
 895
+Assign Job : 3 BUY 1 SELL 4:0
+After bit mask : 2
 896
 897
-Assign Job : 2 BUY 2 SELL 4:0
-After bit mask : 4
 898
 899
 900
@@ -930,8 +936,8 @@ After bit mask : 4
 908
 909
 910
-Assign Job : 3 BUY 3 SELL 6:0
-After bit mask : 8
+Assign Job : 2 BUY 1 SELL 5:0
+After bit mask : 2
 911
 912
 913
@@ -973,16 +979,12 @@ After bit mask : 8
 949
 950
 951
-Assign Job : 1 BUY 2 SELL 4:0
-After bit mask : 4
 952
 953
 954
 955
 956
 957
-Assign Job : 0 BUY 3 SELL 5:0
-After bit mask : 8
 958
 959
 960
@@ -1089,8 +1091,14 @@ After bit mask : 8
 1061
 1062
 1063
+Assign Job : 1 BUY 1 SELL 4:0
+After bit mask : 2
 1064
+Assign Job : 2 BUY 3 SELL 6:0
+After bit mask : 8
 1065
+Assign Job : 3 BUY 2 SELL 6:0
+After bit mask : 4
 1066
 1067
 1068
@@ -1163,8 +1171,6 @@ After bit mask : 8
 1135
 1136
 1137
-Assign Job : 2 BUY 2 SELL 6:0
-After bit mask : 12
 1138
 1139
 1140
@@ -1218,6 +1224,8 @@ After bit mask : 12
 1188
 1189
 1190
+Assign Job : 0 BUY 3 SELL 6:0
+After bit mask : 12
 1191
 1192
 1193
@@ -1231,8 +1239,6 @@ After bit mask : 12
 1201
 1202
 1203
-Assign Job : 0 BUY 1 SELL 5:0
-After bit mask : 2
 1204
 1205
 1206
@@ -1248,6 +1254,8 @@ After bit mask : 2
 1216
 1217
 1218
+Assign Job : 1 BUY 4 SELL 7:0
+After bit mask : 16
 1219
 1220
 1221
@@ -1303,8 +1311,6 @@ After bit mask : 2
 1271
 1272
 1273
-Assign Job : 3 BUY 3 SELL 5:0
-After bit mask : 8
 1274
 1275
 1276
@@ -1334,10 +1340,14 @@ After bit mask : 8
 1300
 1301
 1302
+Assign Job : 2 BUY 3 SELL 5:0
+After bit mask : 8
 1303
 1304
 1305
 1306
+Assign Job : 3 BUY 2 SELL 4:0
+After bit mask : 4
 1307
 1308
 1309
@@ -1364,8 +1374,6 @@ After bit mask : 8
 1330
 1331
 1332
-Assign Job : 1 BUY 1 SELL 4:0
-After bit mask : 2
 1333
 1334
 1335
@@ -1380,8 +1388,6 @@ After bit mask : 2
 1344
 1345
 1346
-Assign Job : 0 BUY 5 SELL 7:0
-After bit mask : 32
 1347
 1348
 1349
@@ -1483,6 +1489,8 @@ After bit mask : 32
 1445
 1446
 1447
+Assign Job : 1 BUY 2 SELL 4:0
+After bit mask : 4
 1448
 1449
 1450
@@ -1507,8 +1515,6 @@ After bit mask : 32
 1469
 1470
 1471
-Assign Job : 1 BUY 4 SELL 7:0
-After bit mask : 16
 1472
 1473
 1474
@@ -1528,6 +1534,8 @@ After bit mask : 16
 1488
 1489
 1490
+Assign Job : 0 BUY 3 SELL 5:0
+After bit mask : 8
 1491
 1492
 1493
@@ -1556,8 +1564,6 @@ After bit mask : 16
 1516
 1517
 1518
-Assign Job : 2 BUY 2 SELL 4:0
-After bit mask : 4
 1519
 1520
 1521
@@ -1610,8 +1616,6 @@ After bit mask : 4
 1568
 1569
 1570
-Assign Job : 0 BUY 3 SELL 5:0
-After bit mask : 8
 1571
 1572
 1573
@@ -1639,7 +1643,11 @@ After bit mask : 8
 1595
 1596
 1597
+Assign Job : 2 BUY 1 SELL 5:0
+After bit mask : 2
 1598
+Assign Job : 3 BUY 1 SELL 4:0
+After bit mask : 2
 1599
 1600
 1601
@@ -1702,8 +1710,6 @@ After bit mask : 8
 1658
 1659
 1660
-Assign Job : 3 BUY 1 SELL 5:0
-After bit mask : 2
 1661
 1662
 1663
@@ -1788,8 +1794,6 @@ After bit mask : 2
 1742
 1743
 1744
-Assign Job : 1 BUY 2 SELL 4:0
-After bit mask : 4
 1745
 1746
 1747
@@ -1800,7 +1804,11 @@ After bit mask : 4
 1752
 1753
 1754
+Assign Job : 2 BUY 5 SELL 7:0
+After bit mask : 32
 1755
+Assign Job : 3 BUY 2 SELL 6:0
+After bit mask : 4
 1756
 1757
 1758
@@ -1840,13 +1848,15 @@ After bit mask : 4
 1792
 1793
 1794
+Assign Job : 0 BUY 1 SELL 5:0
+After bit mask : 2
+Assign Job : 1 BUY 1 SELL 4:0
+After bit mask : 2
 1795
 1796
 1797
 1798
 1799
-Assign Job : 3 BUY 3 SELL 6:0
-After bit mask : 8
 1800
 1801
 1802
@@ -1895,8 +1905,6 @@ After bit mask : 8
 1845
 1846
 1847
-Assign Job : 2 BUY 1 SELL 4:0
-After bit mask : 2
 1848
 1849
 1850
@@ -1944,8 +1952,6 @@ After bit mask : 2
 1892
 1893
 1894
-Assign Job : 0 BUY 1 SELL 5:0
-After bit mask : 2
 1895
 1896
 1897
@@ -1999,12 +2005,16 @@ After bit mask : 2
 1945
 1946
 1947
+Assign Job : 1 BUY 2 SELL 6:0
+After bit mask : 4
 1948
 1949
 1950
 1951
 1952
 1953
+Assign Job : 0 BUY 5 SELL 7:0
+After bit mask : 32
 1954
 1955
 1956
@@ -2036,6 +2046,8 @@ After bit mask : 2
 1982
 1983
 1984
+Assign Job : 2 BUY 3 SELL 5:0
+After bit mask : 8
 1985
 1986
 1987
@@ -2048,11 +2060,11 @@ After bit mask : 2
 1994
 1995
 1996
+Assign Job : 3 BUY 3 SELL 5:0
+After bit mask : 8
 1997
 1998
 1999
-Assign Job : 2 BUY 4 SELL 7:0
-After bit mask : 16
 2000
 2001
 2002
@@ -2093,8 +2105,6 @@ After bit mask : 16
 2037
 2038
 2039
-Assign Job : 0 BUY 3 SELL 6:0
-After bit mask : 8
 2040
 2041
 2042
@@ -2218,8 +2228,6 @@ After bit mask : 8
 2160
 2161
 2162
-Assign Job : 3 BUY 3 SELL 5:0
-After bit mask : 8
 2163
 2164
 2165
@@ -2243,6 +2251,8 @@ After bit mask : 8
 2183
 2184
 2185
+Assign Job : 1 BUY 2 SELL 4:0
+After bit mask : 4
 2186
 2187
 2188
@@ -2318,7 +2328,11 @@ After bit mask : 8
 2258
 2259
 2260
+Assign Job : 2 BUY 1 SELL 5:0
+After bit mask : 2
 2261
+Assign Job : 0 BUY 2 SELL 4:0
+After bit mask : 4
 2262
 2263
 2264
@@ -2345,6 +2359,8 @@ After bit mask : 8
 2285
 2286
 2287
+Assign Job : 3 BUY 1 SELL 5:0
+After bit mask : 2
 2288
 2289
 2290
@@ -2359,8 +2375,6 @@ After bit mask : 8
 2299
 2300
 2301
-Assign Job : 2 BUY 2 SELL 4:0
-After bit mask : 4
 2302
 2303
 2304
@@ -2426,8 +2440,6 @@ After bit mask : 4
 2364
 2365
 2366
-Assign Job : 0 BUY 3 SELL 5:0
-After bit mask : 8
 2367
 2368
 2369
@@ -2441,8 +2453,6 @@ After bit mask : 8
 2377
 2378
 2379
-Assign Job : 1 BUY 1 SELL 4:0
-After bit mask : 2
 2380
 2381
 2382
@@ -2455,6 +2465,8 @@ After bit mask : 2
 2389
 2390
 2391
+Assign Job : 2 BUY 3 SELL 6:0
+After bit mask : 8
 2392
 2393
 2394
@@ -2509,6 +2521,8 @@ After bit mask : 2
 2443
 2444
 2445
+Assign Job : 3 BUY 6 SELL 7:0
+After bit mask : 64
 2446
 2447
 2448
@@ -2540,6 +2554,8 @@ After bit mask : 2
 2474
 2475
 2476
+Assign Job : 1 BUY 1 SELL 4:0
+After bit mask : 2
 2477
 2478
 2479
@@ -2581,8 +2597,6 @@ After bit mask : 2
 2515
 2516
 2517
-Assign Job : 1 BUY 6 SELL 7:0
-After bit mask : 64
 2518
 2519
 2520
@@ -2612,8 +2626,6 @@ After bit mask : 64
 2544
 2545
 2546
-Assign Job : 3 BUY 1 SELL 5:0
-After bit mask : 2
 2547
 2548
 2549
@@ -2637,6 +2649,8 @@ After bit mask : 2
 2567
 2568
 2569
+Assign Job : 0 BUY 1 SELL 4:0
+After bit mask : 2
 2570
 2571
 2572
@@ -2700,8 +2714,12 @@ After bit mask : 2
 2630
 2631
 2632
+Assign Job : 2 BUY 6 SELL 7:0
+After bit mask : 64
 2633
 2634
+Assign Job : 1 BUY 2 SELL 6:0
+After bit mask : 4
 2635
 2636
 2637
@@ -2719,8 +2737,6 @@ After bit mask : 2
 2649
 2650
 2651
-Assign Job : 0 BUY 1 SELL 5:0
-After bit mask : 2
 2652
 2653
 2654
@@ -2755,8 +2771,6 @@ After bit mask : 2
 2683
 2684
 2685
-Assign Job : 3 BUY 5 SELL 7:0
-After bit mask : 96
 2686
 2687
 2688
@@ -2789,13 +2803,13 @@ After bit mask : 96
 2715
 2716
 2717
-Assign Job : 2 BUY 1 SELL 4:0
-After bit mask : 2
 2718
 2719
 2720
 2721
 2722
+Assign Job : 0 BUY 3 SELL 6:0
+After bit mask : 8
 2723
 2724
 2725
@@ -2849,7 +2863,11 @@ After bit mask : 2
 2773
 2774
 2775
+Assign Job : 3 BUY 1 SELL 5:0
+After bit mask : 2
 2776
+Assign Job : 2 BUY 3 SELL 5:0
+After bit mask : 8
 2777
 2778
 2779
@@ -2879,8 +2897,6 @@ After bit mask : 2
 2803
 2804
 2805
-Assign Job : 0 BUY 2 SELL 6:0
-After bit mask : 4
 2806
 2807
 2808
@@ -2937,8 +2953,6 @@ After bit mask : 4
 2859
 2860
 2861
-Assign Job : 2 BUY 2 SELL 6:0
-After bit mask : 4
 2862
 2863
 2864
@@ -2949,6 +2963,8 @@ After bit mask : 4
 2869
 2870
 2871
+Assign Job : 1 BUY 6 SELL 7:0
+After bit mask : 64
 2872
 2873
 2874
@@ -3085,8 +3101,6 @@ After bit mask : 4
 3005
 3006
 3007
-Assign Job : 1 BUY 1 SELL 5:0
-After bit mask : 2
 3008
 3009
 3010
@@ -3094,16 +3108,24 @@ After bit mask : 2
 3012
 3013
 3014
+Assign Job : 1 BUY 3 SELL 6:0
+After bit mask : 8
 3015
 3016
 3017
+Assign Job : 2 BUY 1 SELL 5:0
+After bit mask : 2
 3018
 3019
 3020
+Assign Job : 0 BUY 1 SELL 4:0
+After bit mask : 2
 3021
 3022
 3023
 3024
+Assign Job : 3 BUY 2 SELL 6:0
+After bit mask : 4
 3025
 3026
 3027
@@ -3136,8 +3158,6 @@ After bit mask : 2
 3054
 3055
 3056
-Assign Job : 3 BUY 1 SELL 5:0
-After bit mask : 2
 3057
 3058
 3059
@@ -3229,6 +3249,8 @@ After bit mask : 2
 3145
 3146
 3147
+Assign Job : 2 BUY 5 SELL 7:0
+After bit mask : 32
 3148
 3149
 3150
@@ -3274,10 +3296,6 @@ After bit mask : 2
 3190
 3191
 3192
-Assign Job : 0 BUY 5 SELL 7:0
-After bit mask : 32
-Assign Job : 2 BUY 3 SELL 5:0
-After bit mask : 8
 3193
 3194
 3195
@@ -3300,6 +3318,8 @@ After bit mask : 8
 3212
 3213
 3214
+Assign Job : 0 BUY 3 SELL 5:0
+After bit mask : 8
 3215
 3216
 3217
@@ -3330,8 +3350,6 @@ After bit mask : 8
 3242
 3243
 3244
-Assign Job : 1 BUY 2 SELL 4:0
-After bit mask : 4
 3245
 3246
 3247
@@ -3397,6 +3415,8 @@ After bit mask : 4
 3307
 3308
 3309
+Assign Job : 3 BUY 3 SELL 6:0
+After bit mask : 8
 3310
 3311
 3312
@@ -3463,8 +3483,6 @@ After bit mask : 4
 3373
 3374
 3375
-Assign Job : 3 BUY 2 SELL 4:0
-After bit mask : 4
 3376
 3377
 3378
@@ -3515,12 +3533,16 @@ After bit mask : 4
 3423
 3424
 3425
+Assign Job : 1 BUY 2 SELL 6:0
+After bit mask : 4
 3426
 3427
 3428
 3429
 3430
 3431
+Assign Job : 0 BUY 1 SELL 5:0
+After bit mask : 2
 3432
 3433
 3434
@@ -3558,6 +3580,8 @@ After bit mask : 4
 3466
 3467
 3468
+Assign Job : 2 BUY 2 SELL 4:0
+After bit mask : 4
 3469
 3470
 3471
@@ -3657,6 +3681,8 @@ After bit mask : 4
 3565
 3566
 3567
+Assign Job : 3 BUY 3 SELL 5:0
+After bit mask : 8
 3568
 3569
 3570
@@ -3666,8 +3692,6 @@ After bit mask : 4
 3574
 3575
 3576
-Assign Job : 3 BUY 1 SELL 4:0
-After bit mask : 2
 3577
 3578
 3579
@@ -3677,11 +3701,11 @@ After bit mask : 2
 3583
 3584
 3585
+Assign Job : 0 BUY 3 SELL 6:0
+After bit mask : 8
 3586
 3587
 3588
-Assign Job : 2 BUY 1 SELL 5:0
-After bit mask : 2
 3589
 3590
 3591
@@ -3756,6 +3780,8 @@ After bit mask : 2
 3660
 3661
 3662
+Assign Job : 1 BUY 4 SELL 7:0
+After bit mask : 16
 3663
 3664
 3665
@@ -3811,8 +3837,6 @@ After bit mask : 2
 3715
 3716
 3717
-Assign Job : 3 BUY 4 SELL 7:0
-After bit mask : 48
 3718
 3719
 3720
@@ -3821,8 +3845,6 @@ After bit mask : 48
 3723
 3724
 3725
-Assign Job : 2 BUY 3 SELL 6:0
-After bit mask : 8
 3726
 3727
 3728
@@ -3831,8 +3853,6 @@ After bit mask : 8
 3731
 3732
 3733
-Assign Job : 0 BUY 3 SELL 5:0
-After bit mask : 8
 3734
 3735
 3736
@@ -3945,13 +3965,13 @@ After bit mask : 8
 3843
 3844
 3845
+Assign Job : 2 BUY 3 SELL 6:0
+After bit mask : 8
 3846
 3847
 3848
 3849
 3850
-Assign Job : 1 BUY 1 SELL 4:0
-After bit mask : 2
 3851
 3852
 3853
@@ -3987,6 +4007,8 @@ After bit mask : 2
 3883
 3884
 3885
+Assign Job : 0 BUY 2 SELL 6:0
+After bit mask : 4
 3886
 3887
 3888
@@ -4012,6 +4034,8 @@ After bit mask : 2
 3908
 3909
 3910
+Assign Job : 3 BUY 4 SELL 7:0
+After bit mask : 16
 3911
 3912
 3913
@@ -4045,8 +4069,6 @@ After bit mask : 2
 3941
 3942
 3943
-Assign Job : 3 BUY 6 SELL 7:0
-After bit mask : 64
 3944
 3945
 3946
@@ -4093,8 +4115,6 @@ After bit mask : 64
 3987
 3988
 3989
-Assign Job : 1 BUY 2 SELL 4:0
-After bit mask : 4
 3990
 3991
 3992
@@ -4195,8 +4215,6 @@ After bit mask : 4
 4087
 4088
 4089
-Assign Job : 2 BUY 2 SELL 4:0
-After bit mask : 4
 4090
 4091
 4092
@@ -4225,12 +4243,16 @@ After bit mask : 4
 4115
 4116
 4117
+Assign Job : 0 BUY 2 SELL 4:0
+After bit mask : 4
 4118
 4119
 4120
 4121
 4122
 4123
+Assign Job : 1 BUY 7 SELL 8:0
+After bit mask : 128
 4124
 4125
 4126
@@ -4262,8 +4284,6 @@ After bit mask : 4
 4152
 4153
 4154
-Assign Job : 0 BUY 1 SELL 5:0
-After bit mask : 2
 4155
 4156
 4157
@@ -4278,6 +4298,8 @@ After bit mask : 2
 4166
 4167
 4168
+Assign Job : 2 BUY 2 SELL 4:0
+After bit mask : 4
 4169
 4170
 4171
@@ -4308,6 +4330,8 @@ After bit mask : 2
 4196
 4197
 4198
+Assign Job : 1 BUY 6 SELL 7:0
+After bit mask : 64
 4199
 4200
 4201
@@ -4413,8 +4437,6 @@ After bit mask : 2
 4301
 4302
 4303
-Assign Job : 0 BUY 3 SELL 6:0
-After bit mask : 8
 4304
 4305
 4306
@@ -4477,8 +4499,6 @@ After bit mask : 8
 4363
 4364
 4365
-Assign Job : 2 BUY 1 SELL 4:0
-After bit mask : 2
 4366
 4367
 4368
@@ -4496,15 +4516,11 @@ After bit mask : 2
 4380
 4381
 4382
-Assign Job : 3 BUY 7 SELL 8:0
-After bit mask : 128
 4383
 4384
 4385
 4386
 4387
-Assign Job : 1 BUY 2 SELL 6:0
-After bit mask : 12
 4388
 4389
 4390
@@ -4524,6 +4540,8 @@ After bit mask : 12
 4404
 4405
 4406
+Assign Job : 0 BUY 1 SELL 4:0
+After bit mask : 2
 4407
 4408
 4409
@@ -4537,6 +4555,8 @@ After bit mask : 12
 4417
 4418
 4419
+Assign Job : 3 BUY 3 SELL 6:0
+After bit mask : 8
 4420
 4421
 4422
@@ -4554,6 +4574,8 @@ After bit mask : 12
 4434
 4435
 4436
+Assign Job : 2 BUY 1 SELL 4:0
+After bit mask : 2
 4437
 4438
 4439
@@ -4585,8 +4607,6 @@ After bit mask : 12
 4465
 4466
 4467
-Assign Job : 3 BUY 6 SELL 7:0
-After bit mask : 64
 4468
 4469
 4470
@@ -4632,6 +4652,8 @@ After bit mask : 64
 4510
 4511
 4512
+Assign Job : 1 BUY 5 SELL 7:0
+After bit mask : 32
 4513
 4514
 4515
@@ -4640,8 +4662,6 @@ After bit mask : 64
 4518
 4519
 4520
-Assign Job : 2 BUY 4 SELL 7:0
-After bit mask : 80
 4521
 4522
 4523
@@ -4685,6 +4705,8 @@ After bit mask : 80
 4561
 4562
 4563
+Assign Job : 0 BUY 4 SELL 7:0
+After bit mask : 48
 4564
 4565
 4566
@@ -4716,6 +4738,8 @@ After bit mask : 80
 4592
 4593
 4594
+Assign Job : 2 BUY 2 SELL 6:0
+After bit mask : 4
 4595
 4596
 4597
@@ -4728,8 +4752,6 @@ After bit mask : 80
 4604
 4605
 4606
-Assign Job : 0 BUY 5 SELL 7:0
-After bit mask : 112
 4607
 4608
 4609
@@ -4830,8 +4852,6 @@ After bit mask : 112
 4704
 4705
 4706
-Assign Job : 1 BUY 1 SELL 4:0
-After bit mask : 2
 4707
 4708
 4709
@@ -4872,8 +4892,6 @@ After bit mask : 2
 4744
 4745
 4746
-Assign Job : 2 BUY 2 SELL 4:0
-After bit mask : 4
 4747
 4748
 4749
@@ -4889,6 +4907,8 @@ After bit mask : 4
 4759
 4760
 4761
+Assign Job : 1 BUY 2 SELL 4:0
+After bit mask : 4
 4762
 4763
 4764
@@ -4907,6 +4927,8 @@ After bit mask : 4
 4777
 4778
 4779
+Assign Job : 3 BUY 4 SELL 7:0
+After bit mask : 16
 4780
 4781
 4782
@@ -4924,6 +4946,8 @@ After bit mask : 4
 4794
 4795
 4796
+Assign Job : 0 BUY 1 SELL 5:0
+After bit mask : 2
 4797
 4798
 4799
@@ -4959,6 +4983,8 @@ After bit mask : 4
 4829
 4830
 4831
+Assign Job : 2 BUY 6 SELL 7:0
+After bit mask : 80
 4832
 4833
 4834
@@ -5009,8 +5035,6 @@ After bit mask : 4
 4879
 4880
 4881
-Assign Job : 3 BUY 6 SELL 7:0
-After bit mask : 64
 4882
 4883
 4884
@@ -5100,6 +5124,8 @@ After bit mask : 64
 4968
 4969
 4970
+Assign Job : 2 BUY 3 SELL 6:0
+After bit mask : 8
 4971
 4972
 4973
@@ -5120,8 +5146,6 @@ After bit mask : 64
 4988
 4989
 4990
-Assign Job : 1 BUY 3 SELL 5:0
-After bit mask : 8
 4991
 4992
 4993
@@ -5138,6 +5162,8 @@ After bit mask : 8
 5004
 5005
 5006
+Assign Job : 3 BUY 5 SELL 7:0
+After bit mask : 32
 5007
 5008
 5009
@@ -5157,12 +5183,16 @@ After bit mask : 8
 5023
 5024
 5025
+Assign Job : 0 BUY 1 SELL 4:0
+After bit mask : 2
 5026
 5027
 5028
 5029
 5030
 5031
+Assign Job : 1 BUY 1 SELL 4:0
+After bit mask : 2
 5032
 5033
 5034
@@ -5204,8 +5234,6 @@ After bit mask : 8
 5070
 5071
 5072
-Assign Job : 2 BUY 1 SELL 4:0
-After bit mask : 2
 5073
 5074
 5075
@@ -5296,6 +5324,8 @@ After bit mask : 2
 5160
 5161
 5162
+Assign Job : 1 BUY 2 SELL 6:0
+After bit mask : 4
 5163
 5164
 5165
@@ -5322,11 +5352,7 @@ After bit mask : 2
 5186
 5187
 5188
-Assign Job : 1 BUY 1 SELL 5:0
-After bit mask : 2
 5189
-Assign Job : 0 BUY 2 SELL 6:0
-After bit mask : 4
 5190
 5191
 5192
@@ -5353,12 +5379,8 @@ After bit mask : 4
 5213
 5214
 5215
-Assign Job : 2 BUY 2 SELL 6:0
-After bit mask : 4
 5216
 5217
-Assign Job : 3 BUY 1 SELL 4:0
-After bit mask : 2
 5218
 5219
 5220
@@ -5427,6 +5449,8 @@ After bit mask : 2
 5283
 5284
 5285
+Assign Job : 0 BUY 3 SELL 5:0
+After bit mask : 8
 5286
 5287
 5288
@@ -5471,9 +5495,9 @@ After bit mask : 2
 5327
 5328
 5329
-Assign Job : 1 BUY 4 SELL 7:0
-After bit mask : 16
 5330
+Assign Job : 2 BUY 6 SELL 7:0
+After bit mask : 64
 5331
 5332
 5333
@@ -5550,6 +5574,8 @@ After bit mask : 16
 5404
 5405
 5406
+Assign Job : 1 BUY 3 SELL 5:0
+After bit mask : 8
 5407
 5408
 5409
@@ -5601,8 +5627,6 @@ After bit mask : 16
 5455
 5456
 5457
-Assign Job : 3 BUY 5 SELL 7:0
-After bit mask : 48
 5458
 5459
 5460
@@ -5616,6 +5640,8 @@ After bit mask : 48
 5468
 5469
 5470
+Assign Job : 2 BUY 7 SELL 8:0
+After bit mask : 128
 5471
 5472
 5473
@@ -5692,8 +5718,6 @@ After bit mask : 48
 5544
 5545
 5546
-Assign Job : 2 BUY 4 SELL 7:0
-After bit mask : 16
 5547
 5548
 5549
@@ -5711,6 +5735,8 @@ After bit mask : 16
 5561
 5562
 5563
+Assign Job : 2 BUY 2 SELL 6:0
+After bit mask : 4
 5564
 5565
 5566
@@ -5737,6 +5763,8 @@ After bit mask : 16
 5587
 5588
 5589
+Assign Job : 3 BUY 7 SELL 8:0
+After bit mask : 128
 5590
 5591
 5592
@@ -5748,8 +5776,6 @@ After bit mask : 16
 5598
 5599
 5600
-Assign Job : 0 BUY 6 SELL 7:0
-After bit mask : 80
 5601
 5602
 5603
@@ -5765,6 +5791,8 @@ After bit mask : 80
 5613
 5614
 5615
+Assign Job : 0 BUY 6 SELL 7:0
+After bit mask : 64
 5616
 5617
 5618
@@ -5813,6 +5841,8 @@ After bit mask : 80
 5661
 5662
 5663
+Assign Job : 3 BUY 1 SELL 5:0
+After bit mask : 2
 5664
 5665
 5666
@@ -5826,8 +5856,6 @@ After bit mask : 80
 5674
 5675
 5676
-Assign Job : 1 BUY 3 SELL 6:0
-After bit mask : 8
 5677
 5678
 5679
@@ -5849,6 +5877,8 @@ After bit mask : 8
 5695
 5696
 5697
+Assign Job : 1 BUY 1 SELL 5:0
+After bit mask : 2
 5698
 5699
 5700
@@ -6002,15 +6032,17 @@ After bit mask : 8
 5848
 5849
 5850
+Assign Job : 3 BUY 2 SELL 6:0
+After bit mask : 4
 5851
 5852
 5853
 5854
 5855
 5856
+Assign Job : 1 BUY 5 SELL 7:0
+After bit mask : 96
 5857
-Assign Job : 0 BUY 2 SELL 4:0
-After bit mask : 4
 5858
 5859
 5860
@@ -6061,9 +6093,13 @@ After bit mask : 4
 5905
 5906
 5907
+Assign Job : 2 BUY 4 SELL 7:0
+After bit mask : 16
 5908
 5909
 5910
+Assign Job : 0 BUY 3 SELL 5:0
+After bit mask : 8
 5911
 5912
 5913
@@ -6132,8 +6168,6 @@ After bit mask : 4
 5976
 5977
 5978
-Assign Job : 3 BUY 3 SELL 5:0
-After bit mask : 8
 5979
 5980
 5981
@@ -6177,8 +6211,6 @@ After bit mask : 8
 6019
 6020
 6021
-Assign Job : 2 BUY 2 SELL 4:0
-After bit mask : 4
 6022
 6023
 6024
@@ -6225,8 +6257,6 @@ After bit mask : 4
 6065
 6066
 6067
-Assign Job : 1 BUY 7 SELL 8:0
-After bit mask : 128
 6068
 6069
 6070
@@ -6250,6 +6280,8 @@ After bit mask : 128
 6088
 6089
 6090
+Assign Job : 1 BUY 5 SELL 7:0
+After bit mask : 48
 6091
 6092
 6093
@@ -6294,6 +6326,8 @@ After bit mask : 128
 6132
 6133
 6134
+Assign Job : 3 BUY 3 SELL 6:0
+After bit mask : 8
 6135
 6136
 6137
@@ -6330,6 +6364,8 @@ After bit mask : 128
 6168
 6169
 6170
+Assign Job : 0 BUY 1 SELL 5:0
+After bit mask : 2
 6171
 6172
 6173
@@ -6460,6 +6496,8 @@ After bit mask : 128
 6298
 6299
 6300
+Assign Job : 0 BUY 3 SELL 5:0
+After bit mask : 8
 6301
 6302
 6303
@@ -6507,8 +6545,6 @@ After bit mask : 128
 6345
 6346
 6347
-Assign Job : 2 BUY 1 SELL 4:0
-After bit mask : 2
 6348
 6349
 6350
@@ -6520,8 +6556,6 @@ After bit mask : 2
 6356
 6357
 6358
-Assign Job : 0 BUY 3 SELL 6:0
-After bit mask : 8
 6359
 6360
 6361
@@ -6532,10 +6566,10 @@ After bit mask : 8
 6366
 6367
 6368
+Assign Job : 2 BUY 2 SELL 4:0
+After bit mask : 4
 6369
 6370
-Assign Job : 3 BUY 1 SELL 5:0
-After bit mask : 2
 6371
 6372
 6373
@@ -6558,12 +6592,12 @@ After bit mask : 2
 6390
 6391
 6392
+Assign Job : 3 BUY 4 SELL 7:0
+After bit mask : 16
 6393
 6394
 6395
 6396
-Assign Job : 1 BUY 6 SELL 7:0
-After bit mask : 64
 6397
 6398
 6399
@@ -6658,8 +6692,6 @@ After bit mask : 64
 6488
 6489
 6490
-Assign Job : 2 BUY 2 SELL 4:0
-After bit mask : 4
 6491
 6492
 6493
@@ -6693,8 +6725,6 @@ After bit mask : 4
 6521
 6522
 6523
-Assign Job : 3 BUY 5 SELL 7:0
-After bit mask : 32
 6524
 6525
 6526
@@ -6797,8 +6827,6 @@ After bit mask : 32
 6623
 6624
 6625
-Assign Job : 0 BUY 2 SELL 6:0
-After bit mask : 4
 6626
 6627
 6628
@@ -6842,6 +6870,8 @@ After bit mask : 4
 6666
 6667
 6668
+Assign Job : 1 BUY 7 SELL 8:0
+After bit mask : 128
 6669
 6670
 6671
@@ -6871,6 +6901,8 @@ After bit mask : 4
 6695
 6696
 6697
+Assign Job : 0 BUY 2 SELL 4:0
+After bit mask : 4
 6698
 6699
 6700
@@ -6932,6 +6964,8 @@ After bit mask : 4
 6756
 6757
 6758
+Assign Job : 2 BUY 1 SELL 4:0
+After bit mask : 2
 6759
 6760
 6761
@@ -6943,10 +6977,10 @@ After bit mask : 4
 6767
 6768
 6769
+Assign Job : 1 BUY 6 SELL 7:0
+After bit mask : 64
 6770
 6771
-Assign Job : 1 BUY 7 SELL 8:0
-After bit mask : 128
 6772
 6773
 6774
@@ -7032,8 +7066,6 @@ After bit mask : 128
 6854
 6855
 6856
-Assign Job : 1 BUY 1 SELL 4:0
-After bit mask : 2
 6857
 6858
 6859
@@ -7069,14 +7101,10 @@ After bit mask : 2
 6889
 6890
 6891
-Assign Job : 0 BUY 6 SELL 7:0
-After bit mask : 64
 6892
 6893
 6894
 6895
-Assign Job : 3 BUY 7 SELL 8:0
-After bit mask : 128
 6896
 6897
 6898
@@ -7092,11 +7120,15 @@ After bit mask : 128
 6908
 6909
 6910
+Assign Job : 2 BUY 3 SELL 6:0
+After bit mask : 8
 6911
 6912
 6913
 6914
 6915
+Assign Job : 0 BUY 1 SELL 4:0
+After bit mask : 2
 6916
 6917
 6918
@@ -7127,6 +7159,8 @@ After bit mask : 128
 6943
 6944
 6945
+Assign Job : 3 BUY 7 SELL 8:0
+After bit mask : 128
 6946
 6947
 6948
@@ -7150,8 +7184,6 @@ After bit mask : 128
 6966
 6967
 6968
-Assign Job : 2 BUY 3 SELL 5:0
-After bit mask : 8
 6969
 6970
 6971
@@ -7232,12 +7264,12 @@ After bit mask : 8
 7046
 7047
 7048
+Assign Job : 3 BUY 5 SELL 7:0
+After bit mask : 32
 7049
 7050
 7051
 7052
-Assign Job : 3 BUY 4 SELL 7:0
-After bit mask : 16
 7053
 7054
 7055
@@ -7255,6 +7287,8 @@ After bit mask : 16
 7067
 7068
 7069
+Assign Job : 0 BUY 2 SELL 6:0
+After bit mask : 4
 7070
 7071
 7072
@@ -7272,6 +7306,8 @@ After bit mask : 16
 7084
 7085
 7086
+Assign Job : 1 BUY 5 SELL 7:0
+After bit mask : 32
 7087
 7088
 7089
@@ -7338,8 +7374,6 @@ After bit mask : 16
 7150
 7151
 7152
-Assign Job : 0 BUY 4 SELL 7:0
-After bit mask : 16
 7153
 7154
 7155
@@ -7392,6 +7426,8 @@ After bit mask : 16
 7202
 7203
 7204
+Assign Job : 2 BUY 3 SELL 5:0
+After bit mask : 8
 7205
 7206
 7207
@@ -7498,6 +7534,8 @@ After bit mask : 16
 7308
 7309
 7310
+Assign Job : 0 BUY 3 SELL 6:0
+After bit mask : 8
 7311
 7312
 7313
@@ -7519,12 +7557,12 @@ After bit mask : 16
 7329
 7330
 7331
-Assign Job : 1 BUY 5 SELL 7:0
-After bit mask : 48
 7332
 7333
 7334
 7335
+Assign Job : 1 BUY 2 SELL 6:0
+After bit mask : 4
 7336
 7337
 7338
@@ -7695,6 +7733,8 @@ After bit mask : 48
 7503
 7504
 7505
+Assign Job : 2 BUY 1 SELL 5:0
+After bit mask : 2
 7506
 7507
 7508
@@ -7755,6 +7795,8 @@ After bit mask : 48
 7563
 7564
 7565
+Assign Job : 0 BUY 3 SELL 5:0
+After bit mask : 8
 7566
 7567
 7568
@@ -7771,8 +7813,6 @@ After bit mask : 48
 7579
 7580
 7581
-Assign Job : 2 BUY 1 SELL 5:0
-After bit mask : 2
 7582
 7583
 7584
@@ -7782,8 +7822,6 @@ After bit mask : 2
 7588
 7589
 7590
-Assign Job : 3 BUY 2 SELL 4:0
-After bit mask : 4
 7591
 7592
 7593
@@ -7797,6 +7835,8 @@ After bit mask : 4
 7601
 7602
 7603
+Assign Job : 3 BUY 6 SELL 7:0
+After bit mask : 64
 7604
 7605
 7606
@@ -7851,12 +7891,16 @@ After bit mask : 4
 7655
 7656
 7657
+Assign Job : 1 BUY 4 SELL 7:0
+After bit mask : 16
 7658
 7659
 7660
 7661
 7662
 7663
+Assign Job : 2 BUY 3 SELL 5:0
+After bit mask : 8
 7664
 7665
 7666
@@ -7914,8 +7958,6 @@ After bit mask : 4
 7718
 7719
 7720
-Assign Job : 2 BUY 3 SELL 6:0
-After bit mask : 8
 7721
 7722
 7723
@@ -7930,8 +7972,6 @@ After bit mask : 8
 7732
 7733
 7734
-Assign Job : 1 BUY 3 SELL 5:0
-After bit mask : 8
 7735
 7736
 7737
@@ -8058,6 +8098,8 @@ After bit mask : 8
 7858
 7859
 7860
+Assign Job : 0 BUY 1 SELL 5:0
+After bit mask : 2
 7861
 7862
 7863
@@ -8090,8 +8132,6 @@ After bit mask : 8
 7890
 7891
 7892
-Assign Job : 0 BUY 7 SELL 8:0
-After bit mask : 128
 7893
 7894
 7895
@@ -8162,6 +8202,8 @@ After bit mask : 128
 7960
 7961
 7962
+Assign Job : 3 BUY 7 SELL 8:0
+After bit mask : 128
 7963
 7964
 7965
@@ -8176,8 +8218,6 @@ After bit mask : 128
 7974
 7975
 7976
-Assign Job : 3 BUY 1 SELL 4:0
-After bit mask : 2
 7977
 7978
 7979
@@ -8189,6 +8229,8 @@ After bit mask : 2
 7985
 7986
 7987
+Assign Job : 2 BUY 2 SELL 4:0
+After bit mask : 4
 7988
 7989
 7990
@@ -8203,8 +8245,6 @@ After bit mask : 2
 7999
 8000
 8001
-Assign Job : 0 BUY 4 SELL 7:0
-After bit mask : 16
 8002
 8003
 8004
@@ -8222,6 +8262,8 @@ After bit mask : 16
 8016
 8017
 8018
+Assign Job : 0 BUY 3 SELL 6:0
+After bit mask : 8
 8019
 8020
 8021
@@ -8255,6 +8297,8 @@ After bit mask : 16
 8049
 8050
 8051
+Assign Job : 3 BUY 1 SELL 5:0
+After bit mask : 2
 8052
 8053
 8054
@@ -8262,8 +8306,6 @@ After bit mask : 16
 8056
 8057
 8058
-Assign Job : 1 BUY 1 SELL 5:0
-After bit mask : 2
 8059
 8060
 8061
@@ -8291,8 +8333,6 @@ After bit mask : 2
 8083
 8084
 8085
-Assign Job : 2 BUY 2 SELL 4:0
-After bit mask : 4
 8086
 8087
 8088
@@ -8337,8 +8377,6 @@ After bit mask : 4
 8127
 8128
 8129
-Assign Job : 3 BUY 2 SELL 6:0
-After bit mask : 4
 8130
 8131
 8132
@@ -8413,8 +8451,6 @@ After bit mask : 4
 8201
 8202
 8203
-Assign Job : 1 BUY 5 SELL 7:0
-After bit mask : 48
 8204
 8205
 8206
@@ -8423,6 +8459,8 @@ After bit mask : 48
 8209
 8210
 8211
+Assign Job : 1 BUY 7 SELL 8:0
+After bit mask : 128
 8212
 8213
 8214
@@ -8457,6 +8495,8 @@ After bit mask : 48
 8243
 8244
 8245
+Assign Job : 3 BUY 6 SELL 7:0
+After bit mask : 64
 8246
 8247
 8248
@@ -8471,6 +8511,8 @@ After bit mask : 48
 8257
 8258
 8259
+Assign Job : 0 BUY 5 SELL 7:0
+After bit mask : 96
 8260
 8261
 8262
@@ -8497,6 +8539,8 @@ After bit mask : 48
 8283
 8284
 8285
+Assign Job : 1 BUY 1 SELL 4:0
+After bit mask : 6
 8286
 8287
 8288
@@ -8548,8 +8592,6 @@ After bit mask : 48
 8334
 8335
 8336
-Assign Job : 0 BUY 7 SELL 8:0
-After bit mask : 128
 8337
 8338
 8339
@@ -8564,6 +8606,8 @@ After bit mask : 128
 8348
 8349
 8350
+Assign Job : 2 BUY 4 SELL 7:0
+After bit mask : 112
 8351
 8352
 8353
@@ -8575,8 +8619,6 @@ After bit mask : 128
 8359
 8360
 8361
-Assign Job : 2 BUY 1 SELL 4:0
-After bit mask : 2
 8362
 8363
 8364
@@ -8643,8 +8685,6 @@ After bit mask : 2
 8425
 8426
 8427
-Assign Job : 1 BUY 3 SELL 5:0
-After bit mask : 8
 8428
 8429
 8430
@@ -8693,6 +8733,8 @@ After bit mask : 8
 8473
 8474
 8475
+Assign Job : 0 BUY 2 SELL 6:0
+After bit mask : 4
 8476
 8477
 8478
@@ -8707,8 +8749,6 @@ After bit mask : 8
 8487
 8488
 8489
-Assign Job : 3 BUY 6 SELL 7:0
-After bit mask : 64
 8490
 8491
 8492
@@ -8736,8 +8776,6 @@ After bit mask : 64
 8514
 8515
 8516
-Assign Job : 2 BUY 2 SELL 6:0
-After bit mask : 4
 8517
 8518
 8519
@@ -8778,6 +8816,8 @@ After bit mask : 4
 8554
 8555
 8556
+Assign Job : 3 BUY 3 SELL 6:0
+After bit mask : 8
 8557
 8558
 8559
@@ -8798,7 +8838,11 @@ After bit mask : 4
 8574
 8575
 8576
+Assign Job : 2 BUY 1 SELL 5:0
+After bit mask : 2
 8577
+Assign Job : 1 BUY 2 SELL 6:0
+After bit mask : 12
 8578
 8579
 8580
@@ -8847,8 +8891,6 @@ After bit mask : 4
 8623
 8624
 8625
-Assign Job : 3 BUY 3 SELL 6:0
-After bit mask : 8
 8626
 8627
 8628
@@ -8908,8 +8950,6 @@ After bit mask : 8
 8682
 8683
 8684
-Assign Job : 0 BUY 1 SELL 4:0
-After bit mask : 2
 8685
 8686
 8687
@@ -8924,8 +8964,6 @@ After bit mask : 2
 8696
 8697
 8698
-Assign Job : 1 BUY 1 SELL 5:0
-After bit mask : 2
 8699
 8700
 8701
@@ -9026,6 +9064,8 @@ After bit mask : 2
 8796
 8797
 8798
+Assign Job : 2 BUY 4 SELL 7:0
+After bit mask : 16
 8799
 8800
 8801
@@ -9066,6 +9106,8 @@ After bit mask : 2
 8836
 8837
 8838
+Assign Job : 0 BUY 3 SELL 5:0
+After bit mask : 8
 8839
 8840
 8841
@@ -9076,8 +9118,6 @@ After bit mask : 2
 8846
 8847
 8848
-Assign Job : 2 BUY 3 SELL 5:0
-After bit mask : 8
 8849
 8850
 8851
@@ -9085,6 +9125,8 @@ After bit mask : 8
 8853
 8854
 8855
+Assign Job : 1 BUY 2 SELL 4:0
+After bit mask : 4
 8856
 8857
 8858
@@ -9133,14 +9175,10 @@ After bit mask : 8
 8901
 8902
 8903
-Assign Job : 3 BUY 4 SELL 7:0
-After bit mask : 16
 8904
 8905
 8906
 8907
-Assign Job : 1 BUY 5 SELL 7:0
-After bit mask : 48
 8908
 8909
 8910
@@ -9156,8 +9194,6 @@ After bit mask : 48
 8920
 8921
 8922
-Assign Job : 0 BUY 3 SELL 6:0
-After bit mask : 8
 8923
 8924
 8925
@@ -9212,6 +9248,8 @@ After bit mask : 8
 8974
 8975
 8976
+Assign Job : 3 BUY 3 SELL 5:0
+After bit mask : 8
 8977
 8978
 8979
