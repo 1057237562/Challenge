@@ -102,7 +102,7 @@ public:
     float direction;
     Pos position;
 
-    queue<Pos> destination;
+    list<Pos> destination;
     queue<int> action;
 
     double data[16] = {0.37761, -2.5042, -2.13474, 4.13467, -1.0751, 1.28702, 5.05836, 3.1689, 4.75077, 0.166093, 3.04023, 3.14458, 1.92327, -1.96513, 6.50947, 0.894788};
@@ -144,6 +144,7 @@ public:
 RobotBrain *robot[4] = {new GARobotBrain(), new GARobotBrain(), new GARobotBrain(), new GARobotBrain()};
 
 const int purchase[10] = {0, 0, 0, 0, 6, 10, 12, 112, 128, 254}; // Bitmasked
+const int craftTime[10] = {0, 50, 50, 50, 500, 500, 500, 1000, 1, 1};
 
 const int cost[8] = {0, 3000, 4400, 5800, 15400, 17200, 19200, 76000};
 const int value[8] = {0, 6000, 7600, 9200, 22500, 25000, 27500, 105000};
@@ -200,7 +201,12 @@ public:
                         }
                     }
                     double expectedBenefit = (value[table[i].type] - cost[table[i].type]) * f(minTimeCost, 9000, 0.8);
+                    if (purchase[table[buyerId].type] == table[buyerId].resourceState | (1 << table[i].type))
+                    {
+                        expectedBenefit += value[table[buyerId].type] - cost[table[buyerId].type];
+                    }
                     minTimeCost += table[i].remainTime;
+                    // minTimeCost -= craftTime[table[buyerId].type];
                     if (buyerId != -1)
                         possibleRoute.push_back({i, buyerId, minTimeCost, expectedBenefit});
                 }
@@ -212,6 +218,28 @@ public:
                 continue;
             for (Quadruple quad : possibleRoute)
             {
+                bool closest = true;
+                for (int i = 0; i < 4; i++)
+                {
+                    if (!robot[i]->destination.empty())
+                    {
+                        if (table[quad.a].position.euclidDistance(robot[robotId]->position) > table[quad.a].position.euclidDistance(robot[i]->destination.front()))
+                        {
+                            closest = false;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (table[quad.a].position.euclidDistance(robot[robotId]->position) > table[quad.a].position.euclidDistance(robot[i]->position))
+                        {
+                            closest = false;
+                            break;
+                        }
+                    }
+                }
+                if (!closest)
+                    continue;
                 double estimateReachTime = robot[robotId]->position.euclidDistance(table[quad.a].position) * 6.0 / 50.0;
                 double estimateBenefit = quad.d / (quad.c + estimateReachTime);
                 if (maxBenefit < estimateBenefit)
@@ -227,8 +255,8 @@ public:
             LOGGER << "Assign Job : " << robotId << " BUY " << table[ans.a].type << " SELL " << table[ans.b].type << ":" << (purchase[table[ans.a].type] & (1 << table[ans.b].type)) << endl;
             LOGGER << "After bit mask : " << table[ans.b].resultState << endl;
 
-            robot[robotId]->destination.push(table[ans.a].position);
-            robot[robotId]->destination.push(table[ans.b].position);
+            robot[robotId]->destination.push_back(table[ans.a].position);
+            robot[robotId]->destination.push_back(table[ans.b].position);
             robot[robotId]->action.push(BUY);
             robot[robotId]->action.push(SELL);
         }
@@ -319,7 +347,7 @@ int main()
                     table[robot[robotId]->workingTableID].resourceState |= (1 << robot[robotId]->carriedItemType);
                     break;
                 }
-                robot[robotId]->destination.pop();
+                robot[robotId]->destination.pop_front();
                 robot[robotId]->action.pop();
                 /*if (robot[robotId]->destination.empty())
                 {
